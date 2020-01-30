@@ -1,5 +1,56 @@
 @import "bootstrap";
 
-body {
+.root{
+  padding-top: 55px;
+}
+
+.non-root{
   padding-top: 60px;
+}
+
+section{
+  overflow:auto;
+}
+
+textarea{
+  resize:vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+/* home 画像*/
+.cover-img {
+	height: 400px;
+	display: table;
+	width: 100%;
+	background-size: cover;
+}
+
+/* ワイドスクリーン用のCSS */
+@media only screen and (min-width: 1500px) {
+	.cover-img {
+		height: 800px;
+	}
+}
+
+/* タブレット用のCSS */
+@media only screen and (min-width : 768px) and (max-width : 1200px) {
+	.cover-img {
+		height: 500px;
+	}
+}
+
+/* スマホ用のCSS */
+@media only screen and (max-width: 479px) {
+	.cover-img {
+		height: 300px;
+	}
+}
+
+.cover-text {
+	display: table-cell;
+	vertical-align: middle;
+  text-align: center;
 }
