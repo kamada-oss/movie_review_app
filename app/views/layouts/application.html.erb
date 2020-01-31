@@ -12,12 +12,11 @@
   <% if yield(:title).empty? %>
     <div class="root">
       <%= yield %>
-    </div>
   <% else %>
     <div class="container non-root">
       <%= yield %>
-    </div>
   <% end %>
+    </div>
   <%=render("layouts/footer.html.erb")%>
   </body>
 </html>

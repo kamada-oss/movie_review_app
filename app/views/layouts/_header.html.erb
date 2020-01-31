@@ -1,7 +1,7 @@
 <header>
     <div class="container">
       <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
-        <%= link_to "Filmarks", '#', id: "logo" , class: "navbar-brand"%>
+        <%= link_to "Filmarks", root_path, id: "logo" , class: "navbar-brand"%>
         <ul class="navbar-nav mx-auto">
           <li class="nav-item ml-2">
             <div class="dropdown">
@@ -10,9 +10,9 @@
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">上映中の映画</a></li>
-                <li><a href="#">公開予定の映画</a></li>
-                <li><a href="#">レンタル</a></li>
+                <li><%=link_to "上映中の映画", '#'%></li>
+                <li><%=link_to "公開予定の映画", '#'%></li>
+                <li><%=link_to "レンタル", '#'%></li>
               </ul>
             </div>
           </li>
@@ -23,9 +23,9 @@
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">放送中のドラマ</a></li>
-                <li><a href="#">放送予定のドラマ</a></li>
-                <li><a href="#">レンタル</a></li>
+                <li><%=link_to "放送中のドラマ", '#'%></li>
+                <li><%=link_to "放送予定のドラマ", '#'%></li>
+                <li><%=link_to "レンタル", '#'%></li>
               </ul>
             </div>
           </li>
@@ -37,10 +37,18 @@
           </li>
         </ul>
         <ul class="list-inline　float-left">
-          <li class="list-inline-item"><a href="#">Filmarksの楽しみ方</a></li>
-          <li class="list-inline-item"><a href="#">ヘルプ</a></li>
-          <li class="list-inline-item"><a href="#">会員登録</a></li>
-          <li class="list-inline-item"><a href="#">ログイン</a></li>
+          <li class="list-inline-item">
+            <%=link_to "Filmarksの楽しみ方", about_path%>
+          </li>
+          <li class="list-inline-item">
+            <%=link_to "ヘルプ", help_path%>
+          </li>
+          <li class="list-inline-item">
+            <%=link_to "会員登録", signup_path%>
+          </li>
+          <li class="list-inline-item">
+            <%=link_to"ログイン", '#'%>
+          </li>
         </ul>
       </nav>
     </div>
