@@ -3,7 +3,8 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup 
     @user = User.new(name:"Example User", email:"user@example.com",
-                     password:"hogehoge", password_confirmation:"hogehoge")
+                     password:"hogehoge", password_confirmation:"hogehoge",
+                     nickname:"nickname", agreement:true)
   end
   
   test "should be valid" do
@@ -11,22 +12,43 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test "name should be prisent" do
-    @user.name = ""
+    @user.name = "  "
     assert_not @user.valid?
   end
   
   test "email should be prisent" do
-    @user.email = ""
+    @user.email = "  "
     assert_not @user.valid?
   end
   
-  test "name should not be too lond" do
+  test "nickname should be prisent" do
+    @user.nickname = "  "
+    assert_not @user.valid?
+  end
+  
+  test "password should be prisent" do
+    @user.password = @user.password_confirmation = " " * 5
+    assert_not @user.valid?
+  end
+
+  
+  test "name should not be too long" do
     @user.name = "a"*16
     assert_not @user.valid?
   end
   
-  test "email should not be too lond" do
+  test "email should not be too long" do
     @user.email = "a"*244 + "@example.com"
+    assert_not @user.valid?
+  end
+  
+  test "password should have a minimum length" do
+    @user.password = @user.password_confirmation = "a"* 4
+    assert_not @user.valid?
+  end
+  
+  test "nickname should not be too long" do
+    @user.nickname = "a"*16
     assert_not @user.valid?
   end
   
@@ -36,6 +58,14 @@ class UserTest < ActiveSupport::TestCase
     valid_addresses.each do |valid_address|
       @user.email = valid_address
       assert_not @user.valid?, "#{valid_address.inspect} should be invalid"
+    end
+  end
+  
+  test "password validation should accept valid password" do
+    valid_passwords = %W[aaa\saa a-aaaa あああああ　１２３４５ aaaaa\n]
+    valid_passwords.each do |valid_password|
+      @user.password = @user.password_confirmation = valid_password
+      assert_not @user.valid?, "#{valid_password.inspect} should be invalid"
     end
   end
   
@@ -61,13 +91,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
   
-  test "password should be prisent" do
-    @user.password = @user.password_confirmation = " " * 6
+  test "agreement should be true" do
+    @user.agreement = false
+    @user.save
     assert_not @user.valid?
   end
   
-  test "password should have a minimum length" do
-    @user.password = @user.password_confirmation = "a"* 4
-    assert_not @user.valid?
-  end
+  
 end

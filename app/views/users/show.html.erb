@@ -1,0 +1,13 @@
+<% provide(:title, @user.name)%>
+<div class="row">
+  <aside class="col-md-6">
+    <%= gravatar_for @user %>
+    <h2>
+      <%= @user.nickname%>
+      <span><%= "@" + @user.name %></span>
+    </h2>
+  </aside>
+  <div class="col-md-6">
+    <%= link_to "プロフィール編集", "#", class: "btn btn-secondary  profile_edit_btn" %>
+  </div>
+</div>
