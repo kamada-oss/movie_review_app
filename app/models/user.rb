@@ -12,4 +12,12 @@ class User < ApplicationRecord
                        format:{with:VALID_PASSWORD_REGEX}
   validates :nickname, presence:true, length:{maximum:15}
   validates_acceptance_of :agreement, allow_nil: false, on: :create
+  
+  
+  # 渡された文字列のハッシュ値を返す
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end

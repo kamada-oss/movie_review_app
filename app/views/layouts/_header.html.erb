@@ -35,6 +35,21 @@
           <li class="nav-item ml-2">
             <%= link_to "ユーザーを探す", "#", class: "nav-link" %>
           </li>
+          <% if logged_in? %>
+            <li class="nav-item ml-2">
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  マイページ
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><%=link_to "マイページ", current_user%></li>
+                  <li><%=link_to "プロフィール編集", '#'%></li>
+                  <li><%=link_to "ログアウト", logout_path, method: :delete %></li>
+                </ul>
+              </div>
+            </li>
+          <% end %>
         </ul>
         <ul class="list-inline　float-left">
           <li class="list-inline-item">
@@ -43,12 +58,14 @@
           <li class="list-inline-item">
             <%=link_to "ヘルプ", help_path%>
           </li>
-          <li class="list-inline-item">
-            <%=link_to "会員登録", signup_path%>
-          </li>
-          <li class="list-inline-item">
-            <%=link_to"ログイン", '#'%>
-          </li>
+          <% if !logged_in? %>
+            <li class="list-inline-item">
+              <%=link_to "会員登録", signup_path%>
+            </li>
+            <li class="list-inline-item">
+              <%=link_to"ログイン", login_path%>
+            </li>
+          <% end %>
         </ul>
       </nav>
     </div>

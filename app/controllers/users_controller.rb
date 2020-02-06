@@ -6,10 +6,18 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+  
+  def confirm
+    @user = User.new(user_params)
+    render 'new' if @user.invalid?
+  end
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if params[:back]
+      render 'new'
+    elsif @user.save
+      log_in(@user)
       flash[:success] = "ユーザー登録が完了しました"
       redirect_to @user
     else

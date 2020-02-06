@@ -1,14 +1,15 @@
 <% provide(:title, "メンバー登録")%>
 <div class="container">
-<div class="row justify-content-center">
-  <div class="col-md-8">
-    <div class="card">
-      <div class="card-header">メンバー登録（入力）</div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card card_top">
+        <div class="card-header">メンバー登録（入力）</div>
         <div class="card-body">
-          <%= form_for(@user, url:signup_path,html: { class: "form-horizontal" }) do |f| %>
+          <%= form_for(@user, url:confirm_path,html: { class: "form-horizontal" }) do |f| %>
             <%= render 'shared/error_messages' %>
             <div class="form-group">
               <%= f.label :name, "Filmarks ID (15文字以内)", class: "cols-sm-2 control-label"  %>
+              <p class="small text-secondary">登録後に変更はできません</p>
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -45,6 +46,7 @@
             </div>
             <div class="form-group">
               <%= f.label :nickname, "ニックネーム（15文字以内）", class: "cols-sm-2 control-label"  %>
+              <p class="small text-secondary">後で変更することも可能です</p>
               <div class="cols-sm-10">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>

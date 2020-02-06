@@ -1,0 +1,44 @@
+<% provide(:title, "メンバー登録（確認）")%>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card card_top">
+        <div class="card-header">メンバー登録（確認）</div>
+        <div class="card-body">
+          <%= form_for(@user, url:signup_path,html: { class: "form-horizontal" }) do |f| %>
+            <%= f.hidden_field :name %>
+            <%= f.hidden_field :email %>
+            <%= f.hidden_field :password %>
+            <%= f.hidden_field :password_confirmation %>
+            <%= f.hidden_field :nickname %>
+            <%= f.hidden_field :agreement %>
+            <div class="cols-sm-10 confirm-text">
+              <h5 class="strong">Filmarks ID（15文字以内）</h>
+              <p class="small">登録後に変更はできません</p>
+              <h4><%= @user.name %></h>
+            </div>
+            <div class="cols-sm-10 confirm-text">
+              <h5 class="strong">パスワード（半角英数字5文字以上）</h>
+              <h4 class="password_confirm">●●●●●</h4>
+            </div>
+            <div class="cols-sm-10 confirm-text">
+              <h5 class="strong">ニックネーム（15文字以内）</h>
+              <p class="small">後で変更することも可能です</p>
+              <h4><%= @user.nickname %></h>
+            </div>
+            <div class="cols-sm-10">
+              <div class="form-group ">
+                <%= f.submit '入力内容を編集し直す', name: 'back', class: "btn btn-secondary btn-lg btn-block login-button"%>
+              </div>
+            </div>
+            <div class="cols-sm-10">
+              <div class="form-group ">
+                <%= f.submit '登録する', class: "btn btn-success btn-lg btn-block login-button" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
