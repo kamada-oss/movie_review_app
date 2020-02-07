@@ -30,6 +30,10 @@
                   <%= link_to "パスワードを忘れてしまった方はこちら", "#", class: "small text-success" %>
                 </div>
               </div>
+              <%= f.label :remember_me, class: "checkbox inline" do %>
+                <%= f.check_box :remember_me %>
+                <span>ログイン情報を記憶する</span>
+              <% end %>
               <div class="form-group">
                 <%= f.submit "ログイン", class: "btn btn-secondary btn-lg btn-block login-button" %>
               </div>
