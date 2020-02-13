@@ -1,0 +1,57 @@
+<% provide :title, "ユーザーを探す"%>
+<div class="card card_top">
+  <div class="card-header text-center">人気ユーザー５０人</div>
+</div>
+<div class="card card_top">
+  <div class="card-body">
+    <% @users.each do |user| %>
+      <div class="col-md-5">
+        <div class="card card_top">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md">
+                <%= gravatar_for user, size: 25 %>
+                <%= link_to user.nickname, user %>
+                <p class="text-secondary h6"><small><%="@" + user.name %></small></p>
+              </div>
+            </div>
+            <div class="row mt-2 mb-2">
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md">
+                    followers
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md">
+                    35334
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 show_follow">
+                <div class="row">
+                  <div class="col-md">
+                    following
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md">
+                    33445
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 show_follow">
+                <button type="button" class="btn btn-secondary">フォロー</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md">
+                <%= gravatar_for user, size: 50 %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

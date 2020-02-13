@@ -1,0 +1,29 @@
+<div class="card card_top">
+  <div class="card-header text-center"><%=yield(:title)%></div>
+</div>
+<div class="row">
+  <aside class="col-md-4">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-secondary text-center"><strong>設定</strong></li>
+      <% if yield(:title) == "プロフィール編集" %>
+        <%=link_to "プロフィール編集", "/users/#{@user.id}/edit_user_prof", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "プロフィール編集", "/users/#{@user.id}/edit_user_prof", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "アカウント情報" || yield(:title) == "メール設定" || yield(:title) == "パスワード設定" || yield(:title) == "退会"%>
+        <%=link_to "アカウント情報", "/users/#{@user.id}/edit_user_account", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "アカウント情報", "/users/#{@user.id}/edit_user_account", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "ブロックしたユーザー" %>
+        <%=link_to "ブロックしたユーザー", '#', class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "ブロックしたユーザー", '#', class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <li class="list-group-item list-group-item-secondary text-center"><strong>Filmarksについて</strong></li>
+      <%=link_to "Filmarksの使い方", about_path, class:"list-group-item list-group-item-action"%>
+      <%=link_to "ヘルプ", help_path, class:"list-group-item list-group-item-action"%>
+      <%=link_to "利用規約", '#', class:"list-group-item list-group-item-action"%>
+      <%=link_to "プライバシーポリシー", '#', class:"list-group-item list-group-item-action"%>
+    </ul>
+  </aside>

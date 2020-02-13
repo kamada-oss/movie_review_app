@@ -10,9 +10,10 @@ class User < ApplicationRecord
   has_secure_password
   VALID_PASSWORD_REGEX = /\A\w+$\z/i
   validates :password, presence:true, length:{minimum:5},
-                       format:{with:VALID_PASSWORD_REGEX}
+                       format:{with:VALID_PASSWORD_REGEX}, allow_nil: true
   validates :nickname, presence:true, length:{maximum:15}
   validates_acceptance_of :agreement, allow_nil: false, on: :create
+  validates :profile, length:{maximum:1200}
   
   
   # 渡された文字列のハッシュ値を返す

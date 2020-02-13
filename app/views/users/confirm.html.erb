@@ -13,27 +13,27 @@
             <%= f.hidden_field :nickname %>
             <%= f.hidden_field :agreement %>
             <div class="cols-sm-10 confirm-text">
-              <h5 class="strong">Filmarks ID（15文字以内）</h>
+              <h5 class="strong">Filmarks ID（15文字以内）</h5>
               <p class="small">登録後に変更はできません</p>
               <h4><%= @user.name %></h>
             </div>
             <div class="cols-sm-10 confirm-text">
-              <h5 class="strong">パスワード（半角英数字5文字以上）</h>
+              <h5 class="strong">パスワード（半角英数字5文字以上）</h5>
               <h4 class="password_confirm">●●●●●</h4>
             </div>
             <div class="cols-sm-10 confirm-text">
-              <h5 class="strong">ニックネーム（15文字以内）</h>
+              <h5 class="strong">ニックネーム（15文字以内）</h5>
               <p class="small">後で変更することも可能です</p>
               <h4><%= @user.nickname %></h>
             </div>
             <div class="cols-sm-10">
               <div class="form-group ">
-                <%= f.submit '入力内容を編集し直す', name: 'back', class: "btn btn-secondary btn-lg btn-block login-button"%>
+                <%= f.submit '入力内容を編集し直す', name: 'back', class: "btn btn-secondary btn-lg btn-block"%>
               </div>
             </div>
             <div class="cols-sm-10">
               <div class="form-group ">
-                <%= f.submit '登録する', class: "btn btn-success btn-lg btn-block login-button" %>
+                <%= f.submit '登録する', class: "btn btn-success btn-lg btn-block" %>
               </div>
             </div>
           <% end %>

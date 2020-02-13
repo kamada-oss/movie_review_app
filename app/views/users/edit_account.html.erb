@@ -1,0 +1,30 @@
+<% provide(:title, "アカウント情報")%>
+<%=render("shared/edit_user_sidebar.html.erb")%>
+  <div class="col-md-8">
+    <div class="card card_top">
+      <div class="card-header text-center">非公開情報</div>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action">
+          <%=link_to "メールアドレス", "/users/#{current_user.id}/edit_user_email"%>
+          <span class="float-right"><%=@user.email%> ></span>        
+        </li>
+        <li class="list-group-item edit_disable_bg">
+          性別
+          <span class="float-right">未設定</span>   
+        </li>
+        <li class="list-group-item edit_disable_bg">
+          生年月日
+          <span class="float-right">未設定</span>  
+        </li>
+        <li class="list-group-item list-group-item-action">
+          <%=link_to "パスワードを変更", "/users/#{current_user.id}/edit_user_password"%>
+          <span class="float-right">></span> 
+        </li>
+        <li class="list-group-item list-group-item-action">
+          <%=link_to "退会する", "/users/#{current_user.id}/edit_user_account"%>
+          <span class="float-right">></span> 
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

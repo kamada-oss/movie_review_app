@@ -190,7 +190,7 @@ aside{
   }
   p{
     color: silver;
-    font-size: 0.6em;
+    font-size: 0.9em;
   }
 }
 
@@ -233,4 +233,17 @@ aside{
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+/* ----編集ページ---- */
+.edit_disable_bg{
+  background-color: silver;
+}
+
+/* ----ユーザー一覧ページ ----*/
+.show_follow{
+  margin-left: 0;
+  margin-right:3px;
+  padding-left: 0;
+  padding-right: 0;
 }
