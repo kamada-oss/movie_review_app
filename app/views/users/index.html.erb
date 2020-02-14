@@ -10,7 +10,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md">
-                <%= gravatar_for user, size: 25 %>
+                <%= gravatar_for user, 50 %>
                 <%= link_to user.nickname, user %>
                 <p class="text-secondary h6"><small><%="@" + user.name %></small></p>
               </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="row">
               <div class="col-md">
-                <%= gravatar_for user, size: 50 %>
+                <%= gravatar_for user, 100 %>
               </div>
             </div>
           </div>
