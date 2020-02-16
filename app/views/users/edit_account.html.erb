@@ -5,7 +5,7 @@
       <div class="card-header text-center">非公開情報</div>
       <ul class="list-group">
         <li class="list-group-item list-group-item-action">
-          <%=link_to "メールアドレス", "/users/#{current_user.id}/edit_user_email"%>
+          <%=link_to "メールアドレス", "/users/#{@user.id}/edit_user_email"%>
           <span class="float-right"><%=@user.email%> ></span>        
         </li>
         <li class="list-group-item edit_disable_bg">
@@ -17,11 +17,11 @@
           <span class="float-right">未設定</span>  
         </li>
         <li class="list-group-item list-group-item-action">
-          <%=link_to "パスワードを変更", "/users/#{current_user.id}/edit_user_password"%>
+          <%=link_to "パスワードを変更", "/users/#{@user.id}/edit_user_password"%>
           <span class="float-right">></span> 
         </li>
         <li class="list-group-item list-group-item-action">
-          <%=link_to "退会する", "/users/#{current_user.id}/edit_user_account"%>
+          <%=link_to "退会する", "/users/#{@user.id}/withdraw"%>
           <span class="float-right">></span> 
         </li>
       </ul>

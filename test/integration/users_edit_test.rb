@@ -51,4 +51,5 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @user.reload
     assert_not @user.authenticate(password).nil?
   end
+  
 end

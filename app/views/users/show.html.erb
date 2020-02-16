@@ -1,13 +1,23 @@
 <% provide(:title, @user.name)%>
 <div class="row">
-  <aside class="col-md-6">
+  <div class="col-md-auto profile-image">
     <%= gravatar_for @user %>
+  </div>
+  <div class="col-md-6 profile-text">
     <h2>
       <%= @user.nickname%>
       <span><%= "@" + @user.name %></span>
     </h2>
-  </aside>
-  <div class="col-md-6">
-    <%= link_to "プロフィール編集", "/users/#{current_user.id}/edit_user_prof", class: "btn btn-secondary  profile_edit_btn" %>
+    <small>
+      <%= simple_format(@user.profile) %>
+    </small>
+  </div>
+  <div class="col-md-4">
+    <% if current_user?(@user) %>
+      <%= link_to "プロフィール編集", "/users/#{@user.id}/edit_user_prof", class: "btn btn-secondary  profile_edit_btn" %>
+    <% else %>
+      <%= link_to "フォロー", "#", class: "btn btn-secondary  profile_edit_btn" %>
+    <% end %>
+    
   </div>
 </div>

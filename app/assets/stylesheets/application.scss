@@ -116,9 +116,15 @@ footer{
 }
 
 /* ----プロフィール---- */
-aside{
+.profile-image{
+  margin-top:20px;
+  padding-right:0;
+}
+
+.profile-text{
   margin-top:20px;
   float:left;
+  padding-left: 0;
   h2{
     font-size: 1.4em;
     text-align: left;

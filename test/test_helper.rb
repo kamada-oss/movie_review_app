@@ -6,7 +6,6 @@ Minitest::Reporters.use!
 
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
   include ApplicationHelper
   
@@ -19,7 +18,6 @@ class ActiveSupport::TestCase
     session[:user_id] = user.id
   end
 
-  # Add more helper methods to be used by all tests here...
 end
 
 class ActionDispatch::IntegrationTest

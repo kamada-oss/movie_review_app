@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get 'users/:id/edit_user_email', to:'users#edit_email'
   get 'users/:id/edit_user_password', to:'users#edit_password'
   patch 'users/:id/edit_user_password', to:'users#update_password'
+  get 'users/:id/withdraw', to:'users#withdraw'
   resources :users
 end

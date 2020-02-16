@@ -2,13 +2,29 @@ tanakataro:
   name: Tanaka Taro
   email: tanaka@example.com
   password_digest: <%= User.digest('password') %>
+  nickname: tanataro
+  agreement: true
+  admin: true
   
 satouhanako:
   name: Satou Hanako
   email: satou@example.com
   password_digest: <%= User.digest('password') %>
+  nickname: satohana
+  agreement: true
   
 michael:
   name: Michael Example
   email: michael@example.com
   password_digest: <%= User.digest('password') %>
+  nickname: mic
+  agreement: true
+  
+<% 29.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+  nickname: <% "#{n}"%>
+  agreement: true
+<% end %>

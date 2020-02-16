@@ -4,53 +4,116 @@
 </div>
 <div class="card card_top">
   <div class="card-body">
-    <% @users.each do |user| %>
-      <div class="col-md-5">
-        <div class="card card_top">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md">
-                <%= gravatar_for user, 50 %>
-                <%= link_to user.nickname, user %>
-                <p class="text-secondary h6"><small><%="@" + user.name %></small></p>
-              </div>
-            </div>
-            <div class="row mt-2 mb-2">
-              <div class="col-md-3">
-                <div class="row">
-                  <div class="col-md">
-                    followers
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md">
-                    35334
-                  </div>
+    <% @users.each_slice(2) do |left_user, right_user| %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card_top">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md">
+                  <%= gravatar_for left_user, 50 %>
+                  <%= link_to left_user.nickname, left_user %>
+                  <% if logged_in?%>
+                    <% if current_user.admin? && !current_user?(left_user)%>
+                      | <%= link_to "ユーザーを削除", left_user, method: :delete,
+                                      data: { confirm: "本当にユーザを削除してよろしいですか？" } %>
+                    <% end %>
+                  <% end %>
+                  <p class="text-secondary h6"><small><%="@" + left_user.name %></small></p>
                 </div>
               </div>
-              <div class="col-md-3 show_follow">
-                <div class="row">
-                  <div class="col-md">
-                    following
+              <div class="row mt-2 mb-2">
+                <div class="col-md-3">
+                  <div class="row">
+                    <div class="col-md text-secondary">
+                      followers
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md">
+                      35334
+                    </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md">
-                    33445
+                <div class="col-md-3 show_follow">
+                  <div class="row">
+                    <div class="col-md text-secondary">
+                      following
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md">
+                      33445
+                    </div>
                   </div>
                 </div>
+                <div class="col-md-3 show_follow">
+                  <button type="button" class="btn btn-secondary">フォロー</button>
+                </div>
               </div>
-              <div class="col-md-3 show_follow">
-                <button type="button" class="btn btn-secondary">フォロー</button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md">
-                <%= gravatar_for user, 100 %>
+              <div class="row">
+                <div class="col-md">
+                  <%= gravatar_for left_user, 100 %>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <% unless right_user.nil?%>
+          <div class="col-md-6">
+            <div class="card card_top">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md">
+                    <%= gravatar_for right_user, 50 %>
+                    <%= link_to right_user.nickname, right_user %>
+                    <% if logged_in?%>
+                      <% if current_user.admin? && !current_user?(right_user)%>
+                        | <%= link_to "ユーザーを削除", right_user, method: :delete,
+                                        data: { confirm: "本当にユーザを削除してよろしいですか？" } %>
+                      <% end %>
+                    <% end %>
+                    <p class="text-secondary h6"><small><%="@" + right_user.name %></small></p>
+                  </div>
+                </div>
+                <div class="row mt-2 mb-2">
+                  <div class="col-md-3">
+                    <div class="row">
+                      <div class="col-md text-secondary">
+                        followers
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md">
+                        35334
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 show_follow">
+                    <div class="row">
+                      <div class="col-md text-secondary">
+                        following
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md">
+                        33445
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 show_follow">
+                    <button type="button" class="btn btn-secondary">フォロー</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md">
+                    <%= gravatar_for right_user, 100 %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

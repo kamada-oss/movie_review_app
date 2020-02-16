@@ -1,0 +1,15 @@
+<% provide(:title, "退会")%>
+<%=render("shared/edit_user_sidebar.html.erb")%>
+<div class="col-md-8">
+    <div class="card card_top h-100">
+      <div class="card-body">
+        <h6 class="text-center">Filmarksを退会してもよろしいですか？</h6>
+        <h6 class="text-center">これまでの記録は全て削除されてしまいます</h6>
+        <div class="form-group row justify-content-center">
+          <%= link_to "退会する", @user, method: :delete, class: 'btn btn-danger w-50 mt-4',
+                                         data: { confirm: "退会しますか？" }%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
