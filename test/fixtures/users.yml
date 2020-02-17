@@ -4,6 +4,8 @@ tanakataro:
   password_digest: <%= User.digest('password') %>
   nickname: tanataro
   agreement: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
   admin: true
   
 satouhanako:
@@ -12,6 +14,8 @@ satouhanako:
   password_digest: <%= User.digest('password') %>
   nickname: satohana
   agreement: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
   
 michael:
   name: Michael Example
@@ -19,6 +23,9 @@ michael:
   password_digest: <%= User.digest('password') %>
   nickname: mic
   agreement: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
+  
   
 <% 29.times do |n| %>
 user_<%= n %>:
@@ -27,4 +34,6 @@ user_<%= n %>:
   password_digest: <%= User.digest('password') %>
   nickname: <% "#{n}"%>
   agreement: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 <% end %>

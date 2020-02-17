@@ -5,11 +5,23 @@ class UsersController < ApplicationController
   before_action :correct_user, only:[:edit_prof,:update_prof,:edit_account,:edit_email,:edit_password,:update_password, ]
   before_action :admin_user, only:[:destroy]
   def new
-    @user = User.new
+    #@user = User.new
   end
   
   def show
     @user = User.find(params[:id])
+  end
+  
+  def enter_activaton_email
+    @user = User.new
+  end
+  
+  def send_activaton_email
+    @user = 
+  end
+  
+  def enter_activation_code
+    
   end
   
   def confirm

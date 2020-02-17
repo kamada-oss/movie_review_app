@@ -4,13 +4,18 @@ User.create!(name:  "kamada.engineer",
              password_confirmation: "moto0726",
              nickname: "kamada",
              agreement: true,
+             activated: true,
+             activated_at: Time.zone.now,
              admin: true)
 User.create!(name:  "example",
              email: "example@railstutorial.org",
              password:              "foobar",
              password_confirmation: "foobar",
              nickname: "Example User",
-             agreement: true)
+             agreement: true,
+             activated: true,
+             activated_at: Time.zone.now)
+
 99.times do |n|
   name  = "example-#{n+1}"
   email = "example-#{n+1}@railstutorial.org"
@@ -21,5 +26,8 @@ User.create!(name:  "example",
                password:              password,
                password_confirmation: password,
                nickname: nickname,
-               agreement: true)
+               agreement: true,
+               activated: true,
+               activated_at: Time.zone.now)
+
 end
