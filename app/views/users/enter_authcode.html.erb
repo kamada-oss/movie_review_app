@@ -1,0 +1,27 @@
+<% provide(:title, "メンバー登録")%>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card card_top">
+        <div class="card-header">メンバー登録（認証番号確認）</div>
+        <div class="card-body">
+          <%= form_for(:authenticate, url:authenticate_authcode_path,html: { class: "form-horizontal" }) do |f| %>
+            <%= render 'shared/error_messages' %>
+            <div class="form-group" style="margin-top:3em;">
+              <%= f.label :authcode, "認証番号", class: "cols-sm-2 control-label"  %>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                  <%= f.text_field :authcode , class: "form-control", placeholder: "メールに記載されている認証番号を入力してください" %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top:3em;">
+              <%= f.submit "会員登録をする", class: "btn btn-success btn-lg btn-block login-button" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

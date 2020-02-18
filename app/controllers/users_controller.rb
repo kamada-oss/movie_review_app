@@ -17,10 +17,26 @@ class UsersController < ApplicationController
   end
   
   def send_activaton_email
-    @user = 
+    @user = User.new(user_params)
+    @user.password = "password"
+    if @user.valid?(:change_email)
+      @user.password = nil
+      @user.create_activation_digest
+      UserMailer.account_activation(@user).deliver_now
+      redirect_to action: 'enter_authcode', email: @user.email
+    else
+      @user.password = nil
+      render 'enter_activaton_email'
+    end
   end
   
-  def enter_activation_code
+  def enter_authcode
+    #email = user_params[:user]
+    @user = User.new
+    #byebug
+  end
+  
+  def authenticate_authcode
     
   end
   
