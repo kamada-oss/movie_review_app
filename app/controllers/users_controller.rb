@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only:[:edit_prof,:update_prof,:edit_account,:edit_email,:edit_password,:update_password, ]
   before_action :admin_user, only:[:destroy]
   def new
-    #@user = User.new
+    @user = User.new
   end
   
   def show
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       @user.password = nil
       @user.create_activation_digest
       UserMailer.account_activation(@user).deliver_now
-      redirect_to action: 'enter_authcode', email: @user.email
+      redirect_to action: 'enter_authcode', email: @user.email, activation_digest: @user.activation_digest
     else
       @user.password = nil
       render 'enter_activaton_email'
@@ -31,13 +31,16 @@ class UsersController < ApplicationController
   end
   
   def enter_authcode
-    #email = user_params[:user]
-    @user = User.new
-    #byebug
+    @user = User.new(email: params[:email])
+    @activation_digest = params[:activation_digest]
   end
   
   def authenticate_authcode
-    
+    @user = User.new(email: params[:email])
+    activation_digest = params[:activation_digest]
+    authcode = params[:authenticate][:authcode]
+    byebug
+    redirect_to signup_url
   end
   
   def confirm
