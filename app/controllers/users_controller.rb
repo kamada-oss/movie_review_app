@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @user = User.new(email: params[:email])
     activation_digest = params[:activation_digest]
     authcode = params[:authenticate][:authcode]
-    byebug
+    
     redirect_to signup_url
   end
   
