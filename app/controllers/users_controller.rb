@@ -4,8 +4,13 @@ class UsersController < ApplicationController
                                        :edit_email,:edit_password,:update_password, :destroy]
   before_action :correct_user, only:[:edit_prof,:update_prof,:edit_account,:edit_email,:edit_password,:update_password, ]
   before_action :admin_user, only:[:destroy]
+  
   def new
     @user = User.new
+    @user.email = params[:email]
+    @user.activation_digest = params[:activation_digest]
+    @user.activated_at = params[:activated_at]
+    @user.activated = params[:activated]
   end
   
   def show
@@ -32,21 +37,27 @@ class UsersController < ApplicationController
   
   def enter_authcode
     @user = User.new(email: params[:email])
-    @activation_digest = params[:activation_digest]
+    @user.activation_digest = params[:activation_digest]
   end
   
   def authenticate_authcode
-    @user = User.new(email: params[:email])
-    activation_digest = params[:activation_digest]
-    authcode = params[:authenticate][:authcode]
-    
-    
-    redirect_to signup_url
+    user = User.new(email: params[:email])
+    user.activation_digest = params[:activation_digest]
+    if user.authenticated?(:activation, params[:authenticate][:authcode])
+      user.activated = true
+      user.activated_at = Time.zone.now
+      redirect_to action: 'new', email: user.email, activation_digest: user.activation_digest, 
+                                 activated_at: user.activated_at, activated: user.activated
+    else
+      flash.now[:danger] = "認証番号が間違っているか、認証期間が無効です"
+      render 'enter_authcode'
+    end
   end
   
   def confirm
     @user = User.new(user_params)
-    render 'new' if @user.invalid?
+    render 'new' if @user.invalid?([:change_name, :change_password, :change_nickname, 
+                                    :change_agreement, :change_activated, :change_email])
   end
 
   def create
@@ -118,7 +129,8 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :nickname, :agreement, :profile)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :nickname, 
+                                   :agreement, :profile, :activated, :activated_at, :activation_digest)
     end
     
     def logged_in_user

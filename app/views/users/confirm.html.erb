@@ -12,6 +12,9 @@
             <%= f.hidden_field :password_confirmation %>
             <%= f.hidden_field :nickname %>
             <%= f.hidden_field :agreement %>
+            <%= f.hidden_field :activation_digest%>
+            <%= f.hidden_field :activated_at%>
+            <%= f.hidden_field :activated%>
             <div class="cols-sm-10 confirm-text">
               <h5 class="strong">Filmarks ID（15文字以内）</h5>
               <p class="small">登録後に変更はできません</p>

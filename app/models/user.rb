@@ -14,6 +14,7 @@ class User < ApplicationRecord
                        format:{with:VALID_PASSWORD_REGEX}, allow_nil: true, on: :change_password
   validates :nickname, presence:true, length:{maximum:15}, on: :change_nickname
   validates_acceptance_of :agreement, :acceptance =>true, on: :change_agreement
+  validates_acceptance_of :activated, :acceptance =>true, on: :change_activated
   validates :profile, length:{maximum:1200}, on: :change_profile
   
   
@@ -38,7 +39,7 @@ class User < ApplicationRecord
   # トークンがダイジェストと一致したらtrueを返す
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
-    return false if digest.nil?
+    return false if digest.nil? or digest.empty?
     BCrypt::Password.new(digest).is_password?(token)
   end
   
