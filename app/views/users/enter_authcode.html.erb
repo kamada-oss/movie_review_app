@@ -4,7 +4,7 @@
     <div class="col-md-8">
       <div class="card card_top">
         <div class="card-header">メンバー登録（認証番号確認）</div>
-        <div class="card-body">
+        <div class="card-body mb-5 mt-4">
           <%= form_for(:authenticate, url:authenticate_authcode_path,html: { class: "form-horizontal" }) do |f| %>
             <%= render 'shared/error_messages' %>
             <%= hidden_field_tag :email, @user.email %>

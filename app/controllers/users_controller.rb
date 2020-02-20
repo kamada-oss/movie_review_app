@@ -40,6 +40,7 @@ class UsersController < ApplicationController
     activation_digest = params[:activation_digest]
     authcode = params[:authenticate][:authcode]
     
+    
     redirect_to signup_url
   end
   
