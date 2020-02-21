@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_secure_password
   VALID_PASSWORD_REGEX = /\A\w+$\z/i
   validates :password, presence:true, length:{minimum:5},
-                       format:{with:VALID_PASSWORD_REGEX}, allow_nil: true, on: :change_password
+                       format:{with:VALID_PASSWORD_REGEX}, on: :change_password
   validates :nickname, presence:true, length:{maximum:15}, on: :change_nickname
   validates_acceptance_of :agreement, :acceptance =>true, on: :change_agreement
   validates_acceptance_of :activated, :acceptance =>true, on: :change_activated

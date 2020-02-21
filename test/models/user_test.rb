@@ -8,53 +8,54 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test "should be valid" do
-    assert @user.valid?
+    assert @user.valid?([:change_name, :change_email, :change_password,
+                         :change_nickname, :change_agreement])
   end
   
   test "name should be prisent" do
     @user.name = "  "
-    assert_not @user.valid?
+    assert_not @user.valid?(:change_name)
   end
   
   test "email should be prisent" do
     @user.email = "  "
-    assert_not @user.valid?
+    assert_not @user.valid?(:change_email)
   end
   
   test "nickname should be prisent" do
     @user.nickname = "  "
-    assert_not @user.valid?
+    assert_not @user.valid?(:change_nickname)
   end
   
   test "password should be prisent" do
     @user.password = @user.password_confirmation = " " * 5
-    assert_not @user.valid?
+    assert_not @user.valid?(:change_password)
   end
 
   
   test "name should not be too long" do
     @user.name = "a"*16
-    assert_not @user.valid?
+    assert_not @user.valid?(:change_name)
   end
   
   test "email should not be too long" do
     @user.email = "a"*244 + "@example.com"
-    assert_not @user.valid?
+    assert_not @user.valid?(:change_email)
   end
   
   test "profile should not be too long" do
     @user.profile = "a"*1201
-    assert_not @user.valid?
+    assert_not @user.valid?(:change_profile)
   end
   
   test "password should have a minimum length" do
     @user.password = @user.password_confirmation = "a"* 4
-    assert_not @user.valid?
+    assert_not @user.valid?(:change_password)
   end
   
   test "nickname should not be too long" do
     @user.nickname = "a"*16
-    assert_not @user.valid?
+    assert_not @user.valid?(:change_nickname)
   end
   
   test "email validation should accept valid addresses" do
@@ -62,7 +63,7 @@ class UserTest < ActiveSupport::TestCase
                            foo@bar_baz.com foo@bar+baz.com]
     valid_addresses.each do |valid_address|
       @user.email = valid_address
-      assert_not @user.valid?, "#{valid_address.inspect} should be invalid"
+      assert_not @user.valid?(:change_email), "#{valid_address.inspect} should be invalid"
     end
   end
   
@@ -70,7 +71,7 @@ class UserTest < ActiveSupport::TestCase
     valid_passwords = %W[aaa\saa a-aaaa あああああ　１２３４５ aaaaa\n]
     valid_passwords.each do |valid_password|
       @user.password = @user.password_confirmation = valid_password
-      assert_not @user.valid?, "#{valid_password.inspect} should be invalid"
+      assert_not @user.valid?(:change_password), "#{valid_password.inspect} should be invalid"
     end
   end
   
@@ -78,7 +79,7 @@ class UserTest < ActiveSupport::TestCase
     duplicate_user = @user.dup
     duplicate_user.email = "user2@example.com"
     @user.save
-    assert_not duplicate_user.valid?
+    assert_not duplicate_user.valid?(:change_name)
   end
   
   test "email addresses should be unique" do
@@ -86,7 +87,7 @@ class UserTest < ActiveSupport::TestCase
     duplicate_user.name = "Example User2"
     duplicate_user.email = @user.email.upcase
     @user.save
-    assert_not duplicate_user.valid?
+    assert_not duplicate_user.valid?(:change_email)
   end
   
   test "email addresses should be saved as lower-case" do
@@ -99,7 +100,7 @@ class UserTest < ActiveSupport::TestCase
   test "agreement should be true" do
     @user.agreement = false
     @user.save
-    assert_not @user.valid?
+    assert_not @user.valid?(:change_agreement)
   end
   
   test "authenticated? should return false for a user with nil digest" do

@@ -41,13 +41,13 @@ class UsersController < ApplicationController
   end
   
   def authenticate_authcode
-    user = User.new(email: params[:email])
-    user.activation_digest = params[:activation_digest]
-    if user.authenticated?(:activation, params[:authenticate][:authcode])
-      user.activated = true
-      user.activated_at = Time.zone.now
-      redirect_to action: 'new', email: user.email, activation_digest: user.activation_digest, 
-                                 activated_at: user.activated_at, activated: user.activated
+    @user = User.new(email: params[:email])
+    @user.activation_digest = params[:activation_digest]
+    if @user.authenticated?(:activation, params[:authenticate][:authcode])
+      @user.activated = true
+      @user.activated_at = Time.zone.now
+      redirect_to action: 'new', email: @user.email, activation_digest: @user.activation_digest, 
+                                 activated_at: @user.activated_at, activated: @user.activated
     else
       flash.now[:danger] = "認証番号が間違っているか、認証期間が無効です"
       render 'enter_authcode'
@@ -64,7 +64,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if params[:back]
       render 'new'
-    elsif @user.save
+    elsif @user.save(context: [:change_name, :change_password, :change_nickname, 
+                    :change_agreement, :change_activated, :change_email])
       log_in(@user)
       flash[:success] = "ユーザー登録が完了しました"
       redirect_to @user
@@ -79,8 +80,8 @@ class UsersController < ApplicationController
   
   def update_prof
     @user = User.find(params[:id])
-    logged_in?
-    if @user.update_attributes(user_params)
+    @user.assign_attributes(user_params)
+    if @user.save(context: [:change_nickname, :change_profile])
       flash[:success] = "設定を保存しました"
       redirect_to action: 'edit_prof'
     else
@@ -102,7 +103,8 @@ class UsersController < ApplicationController
   
   def update_password
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    @user.assign_attributes(user_params)
+    if  @user.save(context: :change_password)
       flash[:success] = "パスワード変更が完了しました"
       redirect_to action: 'edit_password'
     else
