@@ -21,14 +21,27 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/enter_authcode'
   end
   
-  test "should render to enter_authcode with wrong authcode" do
-    get send_activation_email_path
+  test "should not authenticate with wrong authcode" do
+    get authenticate_authcode_path
     user = User.new
     user.email = "test@test.com"
     user.activation_digest = User.digest("1234")
-    post send_activation_email_path, params:{user:{email:user.email, activation_digest:user.activation_digest},authenticate:{authcode:"1235"}}
+    post authenticate_authcode_path, params:{authenticate:{authcode: "1235"},
+                                             email: user.email, activation_digest: user.activation_digest}
     assert_template 'users/enter_authcode'
     assert_not flash.empty?
+    assert_select 'a', text: 'メンバー登録のトップに戻る', count: 1
+  end
+  
+  test "should authenticate with correct authcode" do
+    user = User.new
+    user.email = "test@test.com"
+    user.activation_digest = User.digest("1234")
+    post authenticate_authcode_path, params:{authenticate:{authcode: "1234"},
+                                             email: user.email, activation_digest: user.activation_digest}
+    follow_redirect!
+    assert_template 'users/new'
+    assert flash.empty?
   end
   
   test "invalid signup information" do 

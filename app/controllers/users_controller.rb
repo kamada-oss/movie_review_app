@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user.activation_digest = params[:activation_digest]
     @user.activated_at = params[:activated_at]
     @user.activated = params[:activated]
+    activated_user
   end
   
   def show
@@ -151,5 +152,9 @@ class UsersController < ApplicationController
     def admin_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user.admin? || current_user?(@user)
+    end
+    
+    def activated_user
+      redirect_to send_activation_email_path unless @user.activated
     end
 end

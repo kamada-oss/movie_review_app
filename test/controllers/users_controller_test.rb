@@ -13,9 +13,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select 'a', text: 'フォロー', count: 0
   end
   
-  test "should get new" do
+  test "should redirect new when not activated" do
     get signup_path
-    assert_response :success
+    assert_redirected_to send_activation_email_path
   end
   
   test "should redirect edit_prof when not login" do
