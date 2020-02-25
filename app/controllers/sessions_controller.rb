@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def new
     @page_view = 0
+    @user = User.new
   end
   
   def create

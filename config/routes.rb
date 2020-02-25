@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/authenticate_authcode', to:'users#authenticate_authcode'
   get  '/signup', to:'users#new'
   post '/signup',  to:'users#create'
+  get  '/confirm', to:'users#confirm'
   post '/confirm', to:'users#confirm'
   get  '/login', to:'sessions#new'
   post '/login', to:'sessions#create'

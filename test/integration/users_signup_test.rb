@@ -44,11 +44,23 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
   
+  test "should show signup information in confirm" do
+    post confirm_path,params:{user:{name:"",email:"user@invalid", password:"hoge", password_confirmation: "geho",
+                              nickname:"", agreement:false}}
+    assert_template 'users/new'
+    assert_select 'div#error_explanation'
+    assert_select 'div.field_with_errors'
+    post confirm_path,params:{user:{name:"Example User", email:"example@example.com",password:"Example",
+                             password_confirmation:"Example", nickname:"Example", agreement:true, activated:true}}
+    assert_template 'users/confirm'
+    assert flash.empty?
+  end
+  
   test "invalid signup information" do 
     get signup_path
     assert_no_difference 'User.count' do
       post signup_path,params:{user:{name:"",email:"user@invalid", password:"hoge", password_confirmation: "geho",
-                                    nickname:"", agreement:false}}
+                               nickname:"", agreement:false}}
     end
     assert_template 'users/new'
     assert_select 'div#error_explanation'

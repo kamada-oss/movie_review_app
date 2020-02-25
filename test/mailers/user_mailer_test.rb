@@ -8,8 +8,8 @@ class UserMailerTest < ActionMailer::TestCase
     #assert_equal "Kamarksご本人さま確認メール：認証番号のお知らせ", mail.subject
     assert_equal [user.email], mail.to
     assert_equal ["noreply@kamarks.com"], mail.from
-    #assert_match user.activation_token, mail.body.encoded.split(/\r\n/).map{|i| Base64.decode64(i)}.join
-    #assert_match user.email, mail.body.encoded.split(/\r\n/).map{|i| Base64.decode64(i)}.join
+    assert_match user.activation_token, mail.body.encoded
+    assert_match user.email, mail.body.encoded
   end
 
   test "password_reset" do

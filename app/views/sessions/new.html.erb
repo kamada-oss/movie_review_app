@@ -41,10 +41,8 @@
           <% end %>
           <% if @page_view == 0 || @page_view == 2%>
             <p class="login_title mt-5">メールアドレスで登録</p>
-            <% if @page_view == 1 %>
-              <p class="small text-danger">メールアドレスが不正です</p> 
-            <% end %>
-            <%= form_for(:session, url:"#",html: { class: "form-horizontal" }) do |f| %>
+            <%= form_for(@user, url:send_activation_email_path,html: { class: "form-horizontal" }) do |f| %>
+            <%= render 'shared/error_messages' %>
               <div class="form-group">
                 <%= f.label :email, "メールアドレス", class: "cols-sm-2 control-label"  %>
                 <div class="cols-sm-10">

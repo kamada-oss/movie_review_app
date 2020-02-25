@@ -18,6 +18,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to send_activation_email_path
   end
   
+  test "should redirect root when form for get request to confirm" do
+    get confirm_path
+    assert_not flash.empty?
+    assert_redirected_to root_url
+  end
+  
   test "should redirect edit_prof when not login" do
     get "/users/#{@user.id}/edit_user_prof"
     assert_not flash.empty?

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
                                        :edit_email,:edit_password,:update_password, :destroy]
   before_action :correct_user, only:[:edit_prof,:update_prof,:edit_account,:edit_email,:edit_password,:update_password, ]
   before_action :admin_user, only:[:destroy]
+  before_action :not_post_for_confirm, only:[:confirm]
   
   def new
     @user = User.new
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
   def confirm
     @user = User.new(user_params)
     render 'new' if @user.invalid?([:change_name, :change_password, :change_nickname, 
-                                    :change_agreement, :change_activated, :change_email])
+                                      :change_agreement, :change_activated, :change_email])
   end
 
   def create
@@ -156,5 +157,12 @@ class UsersController < ApplicationController
     
     def activated_user
       redirect_to send_activation_email_path unless @user.activated
+    end
+    
+    def not_post_for_confirm
+      unless request.post?
+        flash[:danger] = "会員登録に失敗しました。もう一度会員登録をしてください。"
+        redirect_to(root_url) 
+      end
     end
 end
