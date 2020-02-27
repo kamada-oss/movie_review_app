@@ -13,6 +13,7 @@ gem 'jbuilder',     '2.6.4'
 gem 'faker',        '1.7.3'
 gem 'rails-i18n'
 gem 'mail-iso-2022-jp'
+gem 'rack-user_agent'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'

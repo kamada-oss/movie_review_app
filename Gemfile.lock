@@ -301,6 +301,9 @@ GEM
     rack (2.2.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rack-user_agent (0.5.2)
+      rack (>= 1.5)
+      woothee (>= 1.0.0)
     rails (5.1.6)
       actioncable (= 5.1.6)
       actionmailer (= 5.1.6)
@@ -396,6 +399,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    woothee (1.10.0)
     xml-simple (1.1.5)
     xmlrpc (0.3.0)
 
@@ -419,6 +423,7 @@ DEPENDENCIES
   minitest-reporters (= 1.1.14)
   pg (= 0.20.0)
   puma (= 3.9.1)
+  rack-user_agent
   rails (= 5.1.6)
   rails-controller-testing
   rails-i18n
