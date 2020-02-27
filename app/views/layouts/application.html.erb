@@ -9,7 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-  <%=render("layouts/header.html.erb")%>
+  <% if request.from_pc? %>
+    <%=render("layouts/pc-header.html.erb")%>
+  <% else %>
+    <%=render("layouts/smartphone-header.html.erb")%>
+  <% end %>
   <%=render("shared/flash.html.erb")%>
   <%if !yield(:title).empty?%>
     <div class="container">
