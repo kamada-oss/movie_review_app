@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'users/:id/edit_user_password', to:'users#edit_password'
   patch 'users/:id/edit_user_password', to:'users#update_password'
   get 'users/:id/withdraw', to:'users#withdraw'
+  get 'announce_send_password', to:'password_resets#announce_send_password'
   resources :users
   resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 end

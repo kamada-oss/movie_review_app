@@ -13,7 +13,13 @@ class UserMailerTest < ActionMailer::TestCase
   end
 
   test "password_reset" do
-    
+    user = users(:tanakataro)
+    user.reset_token = SecureRandom.urlsafe_base64
+    mail = UserMailer.password_reset(user)
+    assert_equal [user.email], mail.to
+    assert_equal ["noreply@kamarks.com"], mail.from
+    assert_match user.reset_token,        mail.body.encoded
+    assert_match CGI.escape(user.email),  mail.body.encoded
   end
 
 end
