@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   patch 'users/:id/edit_user_password', to:'users#update_password'
   get 'users/:id/withdraw', to:'users#withdraw'
   get 'announce_send_password', to:'password_resets#announce_send_password'
+  get 'announce_success_change_password', to:'password_resets#announce_success_change_password'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

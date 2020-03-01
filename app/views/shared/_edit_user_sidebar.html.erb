@@ -2,7 +2,7 @@
   <div class="card-header text-center"><%=yield(:title)%></div>
 </div>
 <div class="row">
-  <aside class="col-md-4">
+  <div class="col-md-4 mt-4">
     <ul class="list-group">
       <li class="list-group-item list-group-item-secondary text-center"><strong>設定</strong></li>
       <% if yield(:title) == "プロフィール編集" %>
@@ -26,4 +26,4 @@
       <%=link_to "利用規約", '#', class:"list-group-item list-group-item-action"%>
       <%=link_to "プライバシーポリシー", '#', class:"list-group-item list-group-item-action"%>
     </ul>
-  </aside>
+  </div>

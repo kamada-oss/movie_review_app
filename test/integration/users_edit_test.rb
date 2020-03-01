@@ -12,7 +12,6 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     patch "/users/#{@user.id}/edit_user_prof", params: { user: { nickname:  "",
                                                profile: ""}}
     assert_template "users/edit_prof"
-    assert_select "div.alert", "The form contains 1 error."
   end
 
   test "successful edit prof with friendly forwarding" do

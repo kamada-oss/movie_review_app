@@ -6,13 +6,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @other_user = users(:satouhanako)
   end
   
-  test "should appear edit-btn when correct user" do
-    log_in_as(@user)
-    get "/users/#{@user.id}"
-    assert_select 'a[href=?]', "/users/#{@user.id}/edit_user_prof",  text: 'プロフィール編集'
-    assert_select 'a', text: 'フォロー', count: 0
-  end
-  
   test "should redirect new when not activated" do
     get signup_path
     assert_redirected_to send_activation_email_path
