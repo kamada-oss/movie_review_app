@@ -1,0 +1,32 @@
+<% provide(:title, "メール設定（認証番号確認）")%>
+<%=render("shared/edit_user_sidebar.html.erb")%>
+  <div class="col-md-8">
+    <div class="card card_top">
+      <div class="card-body">
+        <%= form_for(:email_reset, url: "/email_resets/#{@user.id}/update", html: { class: "form-horizontal" }) do |f| %>
+          <%= render 'shared/error_messages' %>
+          <%= hidden_field_tag :email, @user.email %>
+          <div class="cols-sm-10">
+            <% if @failed_authenticate == 1 %>
+              <p class="small text-danger">認証番号が間違っているか、認証期間が無効です</p> 
+            <% end %>
+          </div>
+          <div class="form-group">
+            <%= f.label :reset_token,"認証番号（必須）", class: "cols-sm-2 control-label" %>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                <%= f.text_field :reset_token , class: "form-control", placeholder: "メールに記載されている認証番号を入力してください" %>
+              </div>
+            </div>
+          </div>
+          <div class="cols-sm-10">
+            <div class="form-group ">
+              <%= f.submit '送信する', class: "btn btn-success" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

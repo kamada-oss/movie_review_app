@@ -10,7 +10,7 @@ class PasswordResetsController < ApplicationController
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
     if @user
-      @user.create_reset_digest
+      @user.create_reset_digest("password")
       @user.send_password_reset_email
       flash[:warning] = "パスワードの再設定について数分以内にメールでご連絡いたします。"
       redirect_to announce_send_password_path

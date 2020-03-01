@@ -34,12 +34,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
   
-  test "should redirect edit_email when not login" do
-    get "/users/#{@user.id}/edit_user_email"
-    assert_not flash.empty?
-    assert_redirected_to login_url
-  end
-  
   test "should redirect update_prof when not login" do
     patch "/users/#{@user.id}/edit_user_prof", params: { user: { nickname:  @user.nickname,
                                                          profile: @user.profile}}
@@ -71,13 +65,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should redirect edit_password when logged in as wrong user" do
     log_in_as(@other_user)
     get "/users/#{@user.id}/edit_user_password"
-    assert flash.empty?
-    assert_redirected_to root_url
-  end
-  
-  test "should redirect edit_email when logged in as wrong user" do
-    log_in_as(@other_user)
-    get "/users/#{@user.id}/edit_user_email"
     assert flash.empty?
     assert_redirected_to root_url
   end

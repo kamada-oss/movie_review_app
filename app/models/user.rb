@@ -55,14 +55,23 @@ class User < ApplicationRecord
   end
   
   #リセットトークンを生成する
-  def create_reset_digest
-    self.reset_token = SecureRandom.urlsafe_base64
+  def create_reset_digest(token)
+    if token == "password"
+      self.reset_token = SecureRandom.urlsafe_base64
+    else
+      self.reset_token = sprintf("%.4d", rand(10000))
+    end
     update_columns(reset_digest:  User.digest(reset_token), reset_sent_at: Time.zone.now)
   end
   
   # パスワード再設定のメールを送信する
   def send_password_reset_email
     UserMailer.password_reset(self).deliver_now
+  end
+  
+  #  Email再設定のメールを送信する
+  def send_email_reset_email
+    UserMailer.email_reset(self).deliver_now
   end
   
   # パスワード再設定の期限が切れている場合はtrueを返す

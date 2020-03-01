@@ -5,7 +5,7 @@
       <div class="card-header text-center">非公開情報</div>
       <ul class="list-group">
         <li class="list-group-item list-group-item-action">
-          <%=link_to "メールアドレス", "/users/#{@user.id}/edit_user_email"%>
+          <%=link_to "メールアドレス", "/email_resets/#{@user.id}/new"%>
           <span class="float-right"><%=@user.email%> ></span>        
         </li>
         <li class="list-group-item edit_disable_bg">

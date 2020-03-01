@@ -16,13 +16,16 @@ Rails.application.routes.draw do
   get 'users/:id/edit_user_prof', to:'users#edit_prof'
   patch '/users/:id/edit_user_prof', to:'users#update_prof'
   get 'users/:id/edit_user_account', to:'users#edit_account'
-  get 'users/:id/edit_user_email', to:'users#edit_email'
   get 'users/:id/edit_user_password', to:'users#edit_password'
   patch 'users/:id/edit_user_password', to:'users#update_password'
   get 'users/:id/withdraw', to:'users#withdraw'
   get 'announce_send_password', to:'password_resets#announce_send_password'
   get 'announce_success_change_password', to:'password_resets#announce_success_change_password'
+  get 'email_resets/:id/new', to:'email_resets#new'
+  post 'email_resets/:id/create', to:'email_resets#create'
+  post '/email_resets/:id/update', to:'email_resets#update'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :email_resets,        only: [:edit]
 end

@@ -19,4 +19,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: user.email, subject:"[Kamarks]パスワード再設定について"
   end
+  
+  def email_reset(user)
+    @user = user
+    mail to: user.email, subject:"Kamarksご本人さま確認メール：認証番号のお知らせ"
+  end
 end

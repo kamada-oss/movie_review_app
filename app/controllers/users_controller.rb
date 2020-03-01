@@ -95,10 +95,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
-  def edit_email
-    @user = User.find(params[:id])
-  end
-  
   def edit_password
     @user = User.find(params[:id])
   end

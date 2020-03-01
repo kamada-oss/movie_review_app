@@ -3,9 +3,13 @@
   <div class="col-md-8">
     <div class="card card_top">
       <div class="card-body">
-        <%= form_for(@user, url:"#",html: { class: "form-horizontal" }) do |f| %>
+        <%= form_for(@user, url: "/email_resets/#{@user.id}/create", method: :post,html: { class: "form-horizontal" }) do |f| %>
           <%= render 'shared/error_messages' %>
+          <%= f.hidden_field :id%>
           <div class="cols-sm-10">
+            <% if @failed_submit == 1 %>
+              <p class="small text-danger">変更後のメールアドレスを入力してください。</p> 
+            <% end %>
             <h5 class="strong">メールアドレスを変更する</h5>
             <p class="small text-secondary">変更するメールアドレスを入力してください。<br>入力したメールアドレス宛にメールを送信します。</p>
           </div>
