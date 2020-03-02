@@ -1,6 +1,6 @@
 class EmailResetsController < ApplicationController
-  before_action :logged_in_user, only:[:new,:edit]
-  before_action :correct_user, only:[:new,:edit]
+  before_action :logged_in_user, only:[:new,:create,:edit,:update]
+  before_action :correct_user, only:[:new,:create,:edit,:update]
   
   
   def new
@@ -19,7 +19,6 @@ class EmailResetsController < ApplicationController
       @user.create_reset_digest("email")
       @user.send_email_reset_email
       redirect_to edit_email_reset_path(id: @user.id, email: @user.email)
-      #redirect_to "/email_resets/#{@user.id}/edit"
     else
       render 'new'
     end
@@ -40,7 +39,7 @@ class EmailResetsController < ApplicationController
       redirect_to "/email_resets/#{@user.id}/new"
     else
       @failed_authenticate = 1
-      flash[:danger] = "メールアドレスの変更が出来ませんでした"
+      flash.now[:danger] = "メールアドレスの変更が出来ませんでした"
       render 'edit'
     end
   end
