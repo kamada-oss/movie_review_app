@@ -14,6 +14,8 @@ gem 'faker',        '1.7.3'
 gem 'rails-i18n'
 gem 'mail-iso-2022-jp'
 gem 'rack-user_agent'
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'

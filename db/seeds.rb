@@ -1,3 +1,5 @@
+require "csv"
+
 User.create!(name:  "kamada.engineer",
              email: "kamada.engineer@gmail.com",
              password:              "moto0726",
@@ -30,4 +32,12 @@ User.create!(name:  "example",
                activated: true,
                activated_at: Time.zone.now)
 
+end
+
+CSV.foreach('db/actor.csv', headers: true) do |row|
+  Actor.create(
+    name: row['name'],
+    country: row['countory'],
+    hometown: row['hometown']
+  )
 end
