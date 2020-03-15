@@ -7,9 +7,9 @@
       <div class="col-md-4 col-sm-6 col-xs-12">
         <ul class="movie">
           <span>映画を探す</span>    
-          <li><%=link_to "上映中の映画", '#'%></li>
-          <li><%=link_to "公開予定の映画", '#'%></li>
-          <li><%=link_to "レンタル", '#'%></li>
+          <li><%=link_to "上映中の映画", movies_list_now_path %></li>
+          <li><%=link_to "レンタル開始予定の映画", movies_list_rental_coming_path%></li>
+          <li><%=link_to "レンタル", movies_list_rental_now_path%></li>
         </ul>
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">

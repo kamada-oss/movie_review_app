@@ -10,9 +10,9 @@
                   aria-expanded="false">映画
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <%=link_to "上映中の映画", '#', class:"dropdown-item"%>
-            <%=link_to "公開予定の映画", '#', class:"dropdown-item"%>
-            <%=link_to "レンタル", '#', class:"dropdown-item"%>
+            <%=link_to "上映中の映画", movies_list_now_path, class:"dropdown-item"%>
+            <%=link_to "レンタル開始予定の映画", movies_list_rental_coming_path, class:"dropdown-item"%>
+            <%=link_to "レンタル", movies_list_rental_now_path, class:"dropdown-item"%>
           </div>
         </div>
         <div class="dropdown">

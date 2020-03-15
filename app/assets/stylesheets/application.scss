@@ -246,10 +246,28 @@ footer{
   background-color: silver;
 }
 
-/* ----ユーザー一覧ページ ----*/
+/* ----ユーザー一覧ページ ---- */
 .show_follow{
   margin-left: 0;
   margin-right:3px;
   padding-left: 0;
   padding-right: 0;
+}
+
+/* ----movieリスト---- */
+.movie_list{
+  p {
+    font-size: 0.8em;
+    margin-bottom: 0;
+  }
+}
+.movie_image{
+  padding-right: 0;
+}
+.movie_text{
+  padding-left: 1em;
+}
+
+.cast_name{
+  font-size: 0.8em;
 }

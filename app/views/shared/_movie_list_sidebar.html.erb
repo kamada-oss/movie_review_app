@@ -1,0 +1,44 @@
+<div class="card card_top">
+  <div class="card-header text-center font-weight-bold"><%=yield(:title)%></div>
+</div>
+<div class="row">
+  <div class="col-md-4 mt-4">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-secondary text-center"><strong>映画を探す</strong></li>
+      <% if yield(:title) == "上映中の映画" %>
+        <%=link_to "上映中の映画", movies_list_now_path, class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "上映中の映画", movies_list_now_path, class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "レンタル開始予定の映画" %>
+        <%=link_to "レンタル開始予定の映画", movies_list_rental_coming_path, class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "レンタル開始予定の映画", movies_list_rental_coming_path, class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "レンタル" %>
+        <%=link_to "レンタル", movies_list_rental_now_path, class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "レンタル", movies_list_rental_now_path, class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "今話題のおすすめ映画" %>
+        <%=link_to "今話題のおすすめ映画", "#", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "今話題のおすすめ映画", "#", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "製作年（年代）" %>
+        <%=link_to "製作年（年代）", "#", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "製作年（年代）", "#", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "製作国" %>
+        <%=link_to "製作国", "#", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "製作国", "#", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "ジャンル" %>
+        <%=link_to "ジャンル", "#", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "ジャンル", "#", class:"list-group-item list-group-item-action"%>
+      <% end %>
+    </ul>
+  </div>

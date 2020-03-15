@@ -1,21 +1,7 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  title: MyString
-  production: MyString
-  creening_time: 2020-03-03 09:39:21
-  genre: MyString
-  average_review: 1
-  director: MyString
-  scenario_writer: MyString
-  cast: MyString
-
-two:
-  title: MyString
-  production: MyString
-  creening_time: 2020-03-03 09:39:21
-  genre: MyString
-  average_review: 1
-  director: MyString
-  scenario_writer: MyString
-  cast: MyString
+movietest1:
+  title: test1
+  release: 2019-12-01
+  production: アメリカ
+  screening_time: 149
+  status: レンタル
+  picture: nil

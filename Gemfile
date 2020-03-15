@@ -16,6 +16,8 @@ gem 'mail-iso-2022-jp'
 gem 'rack-user_agent'
 gem 'carrierwave',             '1.2.2'
 gem 'mini_magick',             '4.7.0'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'
