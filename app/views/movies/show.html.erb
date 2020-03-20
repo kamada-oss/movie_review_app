@@ -1,0 +1,40 @@
+<% provide(:title, "#{@movie.title}-映画情報・レビュー・評価")%>
+<div class="row mt-3">
+  <div class="col-md-3 movie_image">
+    <% if @movie.picture.nil?%>
+      <%= image_tag 'no_image.jpg', size: "260x364" %>
+    <%else%>
+      <%= image_tag @movie.picture, size: "260x364"%>
+    <% end %>
+  </div>
+  <div class="col-md-9 movie_show_text">
+    <h5 class="font-weight-bold"><%=@movie.title%>　
+    <span class="small font-weight-bold">（<%= link_to "#{@movie.release.year}年", "#" %>製作の映画）</span></h5>
+    <p>
+      <span class="font-weight-bold">上映日：</span><%= "#{@movie.release.year}年#{@movie.release.mon}月#{@movie.release.day}日"%> ／
+      <span class="font-weight-bold">製作国：</span><%= link_to @movie.production, "#"%> ／
+      <span class="font-weight-bold">上映時間：</span><%= "#{@movie.screening_time}分"%> 
+    </p>
+    <p>
+      <span class="font-weight-bold">ジャンル：</span><%= link_to @movie.genre, "#"%>
+    </p>
+    <div class="row">
+      <div class="col-md-auto">
+        <p class="mt-2"><span class="font-weight-bold">監督</span></p>
+        <% @movie.directors.each do |director| %>
+          <%= link_to director.name, "#", class: "btn btn-light btn-sm cast_name" %>
+        <% end %>
+      </div>
+      <div class="col-md-auto">
+        <p class="mt-2"><span class="font-weight-bold">脚本</span></p>
+        <% @movie.writers.each do |writer| %>
+          <%= link_to writer.name, "#", class: "btn btn-light btn-sm cast_name" %>
+        <% end %>
+      </div>
+    </div>
+    <p class="mt-2"><span class="font-weight-bold">出演者</span></p>
+    <% @movie.actors.each do |actor| %>
+      <%= link_to actor.name, actor, class: "btn btn-light btn-sm cast_name" %>
+    <% end %>
+  </div>
+</div>

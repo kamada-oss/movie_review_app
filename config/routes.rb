@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'writers/show'
+
+  get 'directors/show'
+
+  get 'actors/show'
+
   #home
   root 'static_pages#home'
   get  '/help', to:'static_pages#help'
@@ -38,4 +44,8 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :email_resets,        only: [:edit]
+  resources :movies,              only: [:show]
+  resources :actors,              only: [:show]
+  resources :directors,           only: [:show]
+  resources :writers,             only: [:show]
 end

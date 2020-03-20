@@ -33,39 +33,17 @@ textarea{
   text-align: center;
 }
 
-/* ---- home 画像 ----*/
-.cover-img {
-	height: 400px;
-	display: table;
-	width: 100%;
-	background-size: cover;
+/* ---- ヘッダー ----*/
+
+@media only screen and (min-width : 768px) {
+    /* デスクトップ表示ではホバー操作でドロップダウンを表示 */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
 }
 
-/* ワイドスクリーン用のCSS */
-@media only screen and (min-width: 1500px) {
-	.cover-img {
-		height: 800px;
-	}
-}
-
-/* タブレット用のCSS */
-@media only screen and (min-width : 768px) and (max-width : 1200px) {
-	.cover-img {
-		height: 500px;
-	}
-}
-
-/* スマホ用のCSS */
-@media only screen and (max-width: 479px) {
-	.cover-img {
-		height: 300px;
-	}
-}
-
-.cover-text {
-	display: table-cell;
-	vertical-align: middle;
-  text-align: center;
+.header_list{
+  padding: 0.2em;
 }
 
 /*---- フッダー ----*/
@@ -115,6 +93,42 @@ footer{
   }
 }
 
+/* ---- home 画像 ----*/
+.cover-img {
+	height: 400px;
+	display: table;
+	width: 100%;
+	background-size: cover;
+}
+
+/* ワイドスクリーン用のCSS */
+@media only screen and (min-width: 1500px) {
+	.cover-img {
+		height: 800px;
+	}
+}
+
+/* タブレット用のCSS */
+@media only screen and (min-width : 768px) and (max-width : 1200px) {
+	.cover-img {
+		height: 500px;
+	}
+}
+
+/* スマホ用のCSS */
+@media only screen and (max-width: 479px) {
+	.cover-img {
+		height: 300px;
+	}
+}
+
+.cover-text {
+	display: table-cell;
+	vertical-align: middle;
+  text-align: center;
+}
+
+
 /* ----プロフィール---- */
 .profile-image{
   margin-top:20px;
@@ -151,7 +165,7 @@ footer{
 .profile_edit_btn{
   float: right;
   margin-top: 20px;
-  width: 70%;
+  width: 50%;
   font-size: 0.8em; 
 }
 
@@ -270,4 +284,21 @@ footer{
 
 .cast_name{
   font-size: 0.8em;
+}
+
+/* ----movie show---- */
+.movie_show_text{
+  padding-left: 1.5em;
+  p{
+    font-size: 0.8em;
+    margin-bottom: 0;
+  }
+}
+
+/* ----actor show---- */
+.movie_btn{
+  padding-right: 0;
+}
+.drama_btn{
+  padding-left: 0;
 }

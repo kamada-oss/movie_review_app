@@ -3,5 +3,18 @@ movietest1:
   release: 2019-12-01
   production: アメリカ
   screening_time: 149
+  status: 公開中
+  
+movietest2:
+  title: test2
+  release: 2019-12-01
+  production: アメリカ
+  screening_time: 149
+  status: レンタル予定
+  
+movietest3:
+  title: test3
+  release: 2019-12-01
+  production: アメリカ
+  screening_time: 149
   status: レンタル
-  picture: nil
