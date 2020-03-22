@@ -34,15 +34,6 @@ User.create!(name:  "example",
 
 end
 
-#actorをcsv経由で追加する
-CSV.foreach('db/actors.csv', headers: true) do |row|
-  Actor.create(
-    name: row['name'],
-    country: row['country'],
-    hometown: row['hometown']
-  )
-end
-
 #movieをcsv経由で追加する
 CSV.foreach('db/movies.csv', headers: true) do |row|
   Movie.create(
@@ -55,44 +46,20 @@ CSV.foreach('db/movies.csv', headers: true) do |row|
   )
 end
 
-#movie_actorをcsv経由で追加する
-CSV.foreach('db/movie_actors.csv', headers: true) do |row|
-  MovieActor.create(
-    movie_id: row['movie_id'],
-    actor_id: row['actor_id'],
-  )
-end
-
-#directorをcsv経由で追加する
-CSV.foreach('db/directors.csv', headers: true) do |row|
-  Director.create(
+#castをcsv経由で追加する
+CSV.foreach('db/casts.csv', headers: true) do |row|
+  Cast.create(
     name: row['name'],
     country: row['country'],
     hometown: row['hometown']
   )
 end
 
-#writerをcsv経由で追加する
-CSV.foreach('db/writers.csv', headers: true) do |row|
-  Writer.create(
-    name: row['name'],
-    country: row['country'],
-    hometown: row['hometown']
-  )
-end
-
-#movie_directorをcsv経由で追加する
-CSV.foreach('db/movie_directors.csv', headers: true) do |row|
-  MovieDirector.create(
+#movie_castをcsv経由で追加する
+CSV.foreach('db/movie_casts.csv', headers: true) do |row|
+  MovieCast.create(
+    relation: row['relation'],
     movie_id: row['movie_id'],
-    director_id: row['director_id'],
-  )
-end
-
-#movie_writerをcsv経由で追加する
-CSV.foreach('db/movie_writers.csv', headers: true) do |row|
-  MovieWriter.create(
-    movie_id: row['movie_id'],
-    writer_id: row['writer_id'],
+    cast_id: row['cast_id']
   )
 end

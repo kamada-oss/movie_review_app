@@ -1,0 +1,46 @@
+movie_casttest1:
+  relation: director
+  movie_id: 619810292
+  cast_id: 503687030
+  
+movie_casttest2:
+  relation: writer
+  movie_id: 619810292
+  cast_id: 118290126
+
+movie_casttest3:
+  relation: actor
+  movie_id: 619810292
+  cast_id: 806078041
+  
+movie_casttest4:
+  relation: director
+  movie_id: 1039719504
+  cast_id: 779047934
+  
+movie_casttest5:
+  relation: writer
+  movie_id: 1039719504
+  cast_id: 426271599
+
+movie_casttest6:
+  relation: actor
+  movie_id: 1039719504
+  cast_id: 6370007
+ 
+movie_casttest7:
+  relation: director
+  movie_id: 184544475
+  cast_id: 929432130
+  
+movie_casttest8:
+  relation: writer
+  movie_id: 184544475
+  cast_id: 668540883
+
+movie_casttest9:
+  relation: actor
+  movie_id: 184544475
+  cast_id: 282996552 
+
+  

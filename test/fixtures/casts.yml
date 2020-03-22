@@ -1,0 +1,44 @@
+casttest1:
+  name: director1
+  country: 日本
+  hometown: 鎌倉
+  
+casttest2:
+  name: writer1
+  country: 日本
+  hometown: 鎌倉
+  
+casttest3:
+  name: actor1
+  country: 日本
+  hometown: 鎌倉
+  
+casttest4:
+  name: director2
+  country: 日本
+  hometown: 鎌倉
+  
+casttest5:
+  name: writer2
+  country: 日本
+  hometown: 鎌倉
+  
+casttest6:
+  name: actor2
+  country: 日本
+  hometown: 鎌倉
+  
+casttest7:
+  name: director3
+  country: 日本
+  hometown: 鎌倉
+  
+casttest8:
+  name: writer3
+  country: 日本
+  hometown: 鎌倉
+  
+casttest9:
+  name: actor3
+  country: 日本
+  hometown: 鎌倉

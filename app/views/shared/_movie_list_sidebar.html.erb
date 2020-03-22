@@ -25,20 +25,8 @@
       <%else%>
         <%=link_to "今話題のおすすめ映画", "#", class:"list-group-item list-group-item-action"%>
       <% end %>
-      <% if yield(:title) == "製作年（年代）" %>
-        <%=link_to "製作年（年代）", "#", class:"list-group-item list-group-item-action bg-secondary"%>
-      <%else%>
-        <%=link_to "製作年（年代）", "#", class:"list-group-item list-group-item-action"%>
-      <% end %>
-      <% if yield(:title) == "製作国" %>
-        <%=link_to "製作国", "#", class:"list-group-item list-group-item-action bg-secondary"%>
-      <%else%>
-        <%=link_to "製作国", "#", class:"list-group-item list-group-item-action"%>
-      <% end %>
-      <% if yield(:title) == "ジャンル" %>
-        <%=link_to "ジャンル", "#", class:"list-group-item list-group-item-action bg-secondary"%>
-      <%else%>
-        <%=link_to "ジャンル", "#", class:"list-group-item list-group-item-action"%>
-      <% end %>
+      <%=link_to "製作年（年代）", "/movies/list/year/2019", class:"list-group-item list-group-item-action"%>
+      <%=link_to "製作国", "#", class:"list-group-item list-group-item-action"%>
+      <%=link_to "ジャンル", "#", class:"list-group-item list-group-item-action"%>
     </ul>
   </div>

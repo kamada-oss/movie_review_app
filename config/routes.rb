@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'casts/show'
+
   get 'writers/show'
 
   get 'directors/show'
@@ -39,13 +41,12 @@ Rails.application.routes.draw do
   get 'movies/list/now', to:'movies#now'
   get 'movies/list/rental_coming', to:'movies#rental_coming'
   get 'movies/list/rental_now', to:'movies#rental_now'
-  get 'movies/list/recommended', to:'movies#recommended'
+  #get 'movies/list/recommended', to:'movies#recommended'
+  get 'movies/list/year/:year', to:'movies#year' 
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :email_resets,        only: [:edit]
   resources :movies,              only: [:show]
-  resources :actors,              only: [:show]
-  resources :directors,           only: [:show]
-  resources :writers,             only: [:show]
+  resources :casts,               only: [:show]
 end

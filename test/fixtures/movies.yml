@@ -18,3 +18,25 @@ movietest3:
   production: アメリカ
   screening_time: 149
   status: レンタル
+  
+movietest4:
+  title: test4
+  release: 2015-12-01
+  production: アメリカ
+  screening_time: 149
+  status: レンタル
+  
+movietest5:
+  title: test5
+  release: 1996-07-26
+  production: アメリカ
+  screening_time: 149
+  status: レンタル
+  
+movietest6:
+  title: test6
+  release: 1970-01-01
+  production: アメリカ
+  screening_time: 149
+  status: レンタル
+  
