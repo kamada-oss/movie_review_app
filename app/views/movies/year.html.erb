@@ -15,7 +15,7 @@
               <div class="col-md-3 movie_image">
                 <% if movie.picture.nil?%>
                   <%= image_tag 'no_image.jpg', size: "150x200" %>
-                <%else%>
+                <% else %>
                   <%= image_tag movie.picture, size: "150x200"%>
                 <% end %>
               </div>
@@ -27,7 +27,7 @@
                   <span class="font-weight-bold">上映時間：</span><%= "#{movie.screening_time}分"%> 
                 </p>
                 <p class="card-text">
-                  <span class="font-weight-bold">ジャンル：</span><%= link_to movie.genre, "#"%>
+                  <span class="font-weight-bold">ジャンル：</span><%= link_to movie.genre, "/movies/list/genre/#{movie.genre_translation}"%>
                 </p>
                 <div class="row">
                   <div class="col-md-auto">

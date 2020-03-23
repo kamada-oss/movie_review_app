@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   get 'movies/list/rental_now', to:'movies#rental_now'
   #get 'movies/list/recommended', to:'movies#recommended'
   get 'movies/list/year/:year', to:'movies#year' 
+  get 'movies/list/genre/:genre', to:'movies#genre' 
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

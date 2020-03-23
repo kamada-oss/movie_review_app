@@ -2,8 +2,8 @@ require "csv"
 
 User.create!(name:  "kamada.engineer",
              email: "kamada.engineer@gmail.com",
-             password:              "moto0726",
-             password_confirmation: "moto0726",
+             password:              "password",
+             password_confirmation: "password",
              nickname: "kamada",
              agreement: true,
              activated: true,

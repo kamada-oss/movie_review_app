@@ -19,6 +19,7 @@ class MoviesListTest < ActionDispatch::IntegrationTest
     movies.each do |movie|
       assert_select "a[href=?]", movie_path(movie)
       assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
       assert_select "a[href=?]", cast_path(@cast1)
       assert_select "a[href=?]", cast_path(@cast2)
       assert_select "a[href=?]", cast_path(@cast3)
@@ -56,6 +57,7 @@ class MoviesListTest < ActionDispatch::IntegrationTest
     movies.each do |movie|
       assert_select "a[href=?]", movie_path(movie)
       assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
       assert_select "a[href=?]", cast_path(@cast1), count: 0
       assert_select "a[href=?]", cast_path(@cast2), count: 0
       assert_select "a[href=?]", cast_path(@cast3), count: 0
@@ -93,6 +95,7 @@ class MoviesListTest < ActionDispatch::IntegrationTest
     movies.each do |movie|
       assert_select "a[href=?]", movie_path(movie)
       assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
       assert_select "a[href=?]", cast_path(@cast1), count: 0
       assert_select "a[href=?]", cast_path(@cast2), count: 0
       assert_select "a[href=?]", cast_path(@cast3), count: 0
@@ -109,11 +112,18 @@ class MoviesListTest < ActionDispatch::IntegrationTest
     #assert_select "a[href=?]", movies_list_recommended_path
   end
   
+  
+  
+  
+  
+  #yeartest
   test "should show movies made in 2019 of more" do
     get "/movies/list/year/2100"
     movies = Movie.where(release: "2019/01/01".."2019/12/31")
     movies.each do |movie|
+      assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
     end
   end
   
@@ -121,7 +131,9 @@ class MoviesListTest < ActionDispatch::IntegrationTest
     get "/movies/list/year/2015"
     movies = Movie.where(release: "2015/01/01".."2015/12/31")
     movies.each do |movie|
+      assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
     end
   end
   
@@ -129,7 +141,9 @@ class MoviesListTest < ActionDispatch::IntegrationTest
     get "/movies/list/year/1990"
     movies = Movie.where(release: "1990/01/01".."1999/12/31")
     movies.each do |movie|
+      assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
     end
   end
   
@@ -137,7 +151,73 @@ class MoviesListTest < ActionDispatch::IntegrationTest
     get "/movies/list/year/1960"
     movies = Movie.where(release: "1970/01/01".."1979/12/31")
     movies.each do |movie|
+      assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+  end
+  
+  
+  
+  
+  #genretest
+  test "should show suspense movies" do
+    get "/movies/list/genre/suspense"
+    movies = Movie.where(genre: "サスペンス")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+  end
+  
+  test "should show documentary movies" do
+    get "/movies/list/genre/documentary"
+    movies = Movie.where(genre: "ドキュメンタリー")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+  end
+  
+  test "should show action movies" do
+    get "/movies/list/genre/action"
+    movies = Movie.where(genre: "アクション")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+  end
+  
+  test "should show SF movies" do
+    get "/movies/list/genre/SF"
+    movies = Movie.where(genre: "SF")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+  end
+  
+  test "should show comedy movies" do
+    get "/movies/list/genre/comedy"
+    movies = Movie.where(genre: "コメディ")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+  end
+  
+  test "should show horror movies" do
+    get "/movies/list/genre/horror"
+    movies = Movie.where(genre: "ホラー")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
     end
   end
 end

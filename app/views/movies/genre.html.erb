@@ -1,4 +1,5 @@
-<%=render("shared/movie_list_sidebar.html.erb")%>
+<% provide(:title, "#{@genre_translated}のおすすめ映画作品")%>
+<%=render("shared/movie_genre_sidebar.html.erb")%>
 <div class="col-md-8">
   <div class="card card_top">
     <div class="card-header text-secondary">おすすめ順</div>
@@ -61,5 +62,4 @@
       <%= paginate @movies, theme: 'twitter-bootstrap-4'%>
     </div>
   </div>
-</div>
 </div>

@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :year_cut, only:[:year]
+  before_action :genre_translate, only:[:genre]
   
   def now
     @movies = Movie.where(status: "公開中").page(params[:page]).per(10)
@@ -27,6 +28,10 @@ class MoviesController < ApplicationController
     end
   end
   
+  def genre
+    @movies = Movie.where(genre: @genre_translated).page(params[:page]).per(10)
+  end
+  
   private
     def year_cut
       @year = params[:year]
@@ -42,6 +47,24 @@ class MoviesController < ApplicationController
         @year = "1980"
       else
         @year = "1970"
+      end
+    end
+    
+    def genre_translate
+      @genre = params[:genre]
+      case @genre
+      when "suspense" then
+        @genre_translated = "サスペンス"
+      when "documentary" then
+        @genre_translated = "ドキュメンタリー"
+      when "action" then
+        @genre_translated = "アクション"
+      when "SF" then
+        @genre_translated = "SF"
+      when "comedy" then
+        @genre_translated = "コメディ"
+      when "horror" then
+        @genre_translated = "ホラー"
       end
     end
 end

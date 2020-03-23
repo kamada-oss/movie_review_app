@@ -1,0 +1,39 @@
+<div class="card card_top">
+  <div class="card-header text-center font-weight-bold"><%=yield(:title)%></div>
+</div>
+<div class="row">
+  <div class="col-md-4 mt-4">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-secondary text-center sidebar_header"><strong>ジャンルで探す</strong></li>
+      <% if yield(:title) == "サスペンスのおすすめ映画作品" %>
+        <%=link_to "サスペンス(#{Movie.where(genre: "サスペンス").count}件)", "/movies/list/genre/suspense", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "サスペンス(#{Movie.where(genre: "サスペンス").count}件)", "/movies/list/genre/suspense", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "ドキュメンタリーのおすすめ映画作品" %>
+        <%=link_to "ドキュメンタリー(#{Movie.where(genre: "ドキュメンタリー").count}件)", "/movies/list/genre/documentary", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "ドキュメンタリー(#{Movie.where(genre: "ドキュメンタリー").count}件)", "/movies/list/genre/documentary", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "アクションのおすすめ映画作品" %>
+        <%=link_to "アクション(#{Movie.where(genre: "アクション").count}件)", "/movies/list/genre/action", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "アクション(#{Movie.where(genre: "アクション").count}件)", "/movies/list/genre/action", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "SFのおすすめ映画作品" %>
+        <%=link_to "SF(#{Movie.where(genre: "SF").count}件)", "/movies/list/genre/SF", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "SF(#{Movie.where(genre: "SF").count}件)", "/movies/list/genre/SF", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "コメディのおすすめ映画作品" %>
+        <%=link_to "コメディ(#{Movie.where(genre: "コメディ").count}件)", "/movies/list/genre/comedy", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "コメディ(#{Movie.where(genre: "コメディ").count}件)", "/movies/list/genre/comedy", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "ホラーのおすすめ映画作品" %>
+        <%=link_to "ホラー(#{Movie.where(genre: "ホラー").count}件)", "/movies/list/genre/horror", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "ホラー(#{Movie.where(genre: "ホラー").count}件)", "/movies/list/genre/horror", class:"list-group-item list-group-item-action"%>
+      <% end %>
+    </ul>
+  </div>

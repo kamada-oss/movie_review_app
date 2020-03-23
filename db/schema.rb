@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20200322071842) do
 
-  create_table "actors", force: :cascade do |t|
-    t.string "name"
-    t.string "country"
-    t.string "hometown"
-    t.string "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "casts", force: :cascade do |t|
     t.string "name"
     t.string "country"
@@ -28,24 +19,6 @@ ActiveRecord::Schema.define(version: 20200322071842) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "directors", force: :cascade do |t|
-    t.string "name"
-    t.string "country"
-    t.string "hometown"
-    t.string "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "movie_actors", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "actor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["actor_id"], name: "index_movie_actors_on_actor_id"
-    t.index ["movie_id"], name: "index_movie_actors_on_movie_id"
   end
 
   create_table "movie_casts", force: :cascade do |t|
@@ -56,24 +29,6 @@ ActiveRecord::Schema.define(version: 20200322071842) do
     t.datetime "updated_at", null: false
     t.index ["cast_id"], name: "index_movie_casts_on_cast_id"
     t.index ["movie_id"], name: "index_movie_casts_on_movie_id"
-  end
-
-  create_table "movie_directors", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "director_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["director_id"], name: "index_movie_directors_on_director_id"
-    t.index ["movie_id"], name: "index_movie_directors_on_movie_id"
-  end
-
-  create_table "movie_writers", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "writer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_movie_writers_on_movie_id"
-    t.index ["writer_id"], name: "index_movie_writers_on_writer_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -106,15 +61,6 @@ ActiveRecord::Schema.define(version: 20200322071842) do
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
-  end
-
-  create_table "writers", force: :cascade do |t|
-    t.string "name"
-    t.string "country"
-    t.string "hometown"
-    t.string "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
