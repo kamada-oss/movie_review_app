@@ -4,10 +4,9 @@
     <div class="card card_top">
       <div class="card-header text-center font-weight-bold">非公開情報</div>
       <ul class="list-group">
-        <li class="list-group-item list-group-item-action">
-          <%=link_to "メールアドレス", "/email_resets/#{@user.id}/new"%>
-          <span class="float-right"><%=@user.email%> ></span>        
-        </li>
+        <%=link_to "/email_resets/#{@user.id}/new", class:"list-group-item list-group-item-action" do%>
+          メールアドレス<span class="float-right text-secondary"><%=@user.email%> ></span> 
+        <% end %>
         <li class="list-group-item edit_disable_bg">
           性別
           <span class="float-right">未設定</span>   
@@ -16,14 +15,12 @@
           生年月日
           <span class="float-right">未設定</span>  
         </li>
-        <li class="list-group-item list-group-item-action">
-          <%=link_to "パスワードを変更", "/users/#{@user.id}/edit_user_password"%>
-          <span class="float-right">></span> 
-        </li>
-        <li class="list-group-item list-group-item-action">
-          <%=link_to "退会する", "/users/#{@user.id}/withdraw"%>
-          <span class="float-right">></span> 
-        </li>
+        <%=link_to "/users/#{@user.id}/edit_user_password", class:"list-group-item list-group-item-action" do%>
+          パスワードを変更<span class="float-right text-secondary">></span> 
+        <% end %> 
+        <%=link_to "/users/#{@user.id}/withdraw", class:"list-group-item list-group-item-action" do%>
+          退会する<span class="float-right text-secondary">></span> 
+        <% end %> 
       </ul>
     </div>
   </div>

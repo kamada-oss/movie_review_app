@@ -6,27 +6,49 @@
     <ul class="list-group">
       <li class="list-group-item list-group-item-secondary text-center"><strong>映画を探す</strong></li>
       <% if yield(:title) == "上映中の映画" %>
-        <%=link_to "上映中の映画", movies_list_now_path, class:"list-group-item list-group-item-action bg-secondary"%>
+        <%=link_to movies_list_now_path, class:"list-group-item list-group-item-action bg-secondary" do%>
+          上映中の映画<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <%else%>
-        <%=link_to "上映中の映画", movies_list_now_path, class:"list-group-item list-group-item-action"%>
+        <%=link_to movies_list_now_path, class:"list-group-item list-group-item-action" do%>
+          上映中の映画<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <% end %>
       <% if yield(:title) == "レンタル開始予定の映画" %>
-        <%=link_to "レンタル開始予定の映画", movies_list_rental_coming_path, class:"list-group-item list-group-item-action bg-secondary"%>
+        <%=link_to movies_list_rental_coming_path, class:"list-group-item list-group-item-action bg-secondary" do%>
+          レンタル開始予定の映画<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <%else%>
-        <%=link_to "レンタル開始予定の映画", movies_list_rental_coming_path, class:"list-group-item list-group-item-action"%>
+        <%=link_to movies_list_rental_coming_path, class:"list-group-item list-group-item-action" do%>
+          レンタル開始予定の映画<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <% end %>
       <% if yield(:title) == "レンタル" %>
-        <%=link_to "レンタル", movies_list_rental_now_path, class:"list-group-item list-group-item-action bg-secondary"%>
+        <%=link_to movies_list_rental_now_path, class:"list-group-item list-group-item-action bg-secondary" do%>
+          レンタル<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <%else%>
-        <%=link_to "レンタル", movies_list_rental_now_path, class:"list-group-item list-group-item-action"%>
+        <%=link_to movies_list_rental_now_path, class:"list-group-item list-group-item-action" do%>
+          レンタル<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <% end %>
       <% if yield(:title) == "今話題のおすすめ映画" %>
-        <%=link_to "今話題のおすすめ映画", "#", class:"list-group-item list-group-item-action bg-secondary"%>
+        <%=link_to "#", class:"list-group-item list-group-item-action bg-secondary" do%>
+          今話題のおすすめ映画<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <%else%>
-        <%=link_to "今話題のおすすめ映画", "#", class:"list-group-item list-group-item-action"%>
+        <%=link_to "#", class:"list-group-item list-group-item-action" do%>
+          今話題のおすすめ映画<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <% end %>
-      <%=link_to "製作年（年代）", "/movies/list/year/2019", class:"list-group-item list-group-item-action"%>
-      <%=link_to "製作国", "#", class:"list-group-item list-group-item-action"%>
-      <%=link_to "ジャンル", "/movies/list/genre/suspense", class:"list-group-item list-group-item-action"%>
+      <%=link_to "/movies/list/year/2019", class:"list-group-item list-group-item-action" do%>
+        製作年（年代）<span class="float-right text-secondary">＞</span> 
+      <% end %>
+      <%=link_to "/movies/list/production/america", class:"list-group-item list-group-item-action" do%>
+        製作国<span class="float-right text-secondary">＞</span> 
+      <% end %>
+      <%=link_to "/movies/list/genre/suspense", class:"list-group-item list-group-item-action" do%>
+        ジャンル<span class="float-right text-secondary">＞</span> 
+      <% end %>
     </ul>
   </div>

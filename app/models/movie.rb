@@ -1,6 +1,8 @@
 class Movie < ApplicationRecord
   #mount_uploader :picture, PictureUploader
   attr_accessor :genre_translated
+  attr_accessor :production_translated
+  
   has_many :movie_casts
    has_many :casts, through: :movie_casts
   has_many :movie_actors
@@ -27,6 +29,25 @@ class Movie < ApplicationRecord
       self.genre_translated = "horror"
     else
       self.genre_translated = "suspense"
+    end
+  end
+  
+  def production_translation
+    case production
+    when "アメリカ" then
+      self.production_translated = "america"
+    when "イギリス" then
+      self.production_translated = "england"
+    when "スペイン" then
+      self.production_translated = "spain"
+    when "シリア" then
+      self.production_translated = "syria"
+    when "カナダ" then
+      self.production_translated = "canada"
+    when "フランス" then
+      self.production_translated = "france"
+    else
+      self.production_translated = "america"
     end
   end
 end

@@ -1,0 +1,63 @@
+<div class="card card_top">
+  <div class="card-header text-center font-weight-bold"><%=yield(:title)%></div>
+</div>
+<div class="row">
+  <div class="col-md-4 mt-4">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-secondary text-center sidebar_header"><strong>製作国で探す</strong></li>
+      <% if yield(:title) == "アメリカのおすすめ映画作品" %>
+        <%=link_to "/movies/list/production/america", class:"list-group-item list-group-item-action bg-secondary" do%>
+          アメリカ(<%=Movie.where(production: "アメリカ").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/movies/list/production/america", class:"list-group-item list-group-item-action" do%>
+          アメリカ(<%=Movie.where(production: "アメリカ").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+      <% if yield(:title) == "イギリスのおすすめ映画作品" %>
+        <%=link_to "/movies/list/production/england", class:"list-group-item list-group-item-action bg-secondary" do%>
+          イギリス(<%=Movie.where(production: "イギリス").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>      
+      <%else%>
+        <%=link_to "/movies/list/production/england", class:"list-group-item list-group-item-action" do%>
+          イギリス(<%=Movie.where(production: "イギリス").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>  
+      <% end %>
+      <% if yield(:title) == "スペインのおすすめ映画作品" %>
+        <%=link_to "/movies/list/production/spain", class:"list-group-item list-group-item-action bg-secondary" do%>
+          スペイン(<%=Movie.where(production: "スペイン").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>  
+      <%else%>
+        <%=link_to "/movies/list/production/spain", class:"list-group-item list-group-item-action" do%>
+          スペイン(<%=Movie.where(production: "スペイン").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %> 
+      <% end %>
+      <% if yield(:title) == "シリアのおすすめ映画作品" %>
+        <%=link_to "/movies/list/production/syria", class:"list-group-item list-group-item-action bg-secondary" do%>
+          シリア(<%=Movie.where(production: "シリア").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/movies/list/production/syria", class:"list-group-item list-group-item-action" do%>
+          シリア(<%=Movie.where(production: "シリア").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+      <% if yield(:title) == "カナダのおすすめ映画作品" %>
+        <%=link_to "/movies/list/production/canada", class:"list-group-item list-group-item-action bg-secondary" do%>
+          カナダ(<%=Movie.where(production: "カナダ").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/movies/list/production/canada", class:"list-group-item list-group-item-action" do%>
+          カナダ(<%=Movie.where(production: "カナダ").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+            <% if yield(:title) == "フランスのおすすめ映画作品" %>
+        <%=link_to "/movies/list/production/france", class:"list-group-item list-group-item-action bg-secondary" do%>
+          フランス(<%=Movie.where(production: "フランス").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/movies/list/production/france", class:"list-group-item list-group-item-action" do%>
+          フランス(<%=Movie.where(production: "フランス").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+    </ul>
+  </div>

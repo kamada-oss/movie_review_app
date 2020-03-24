@@ -9,7 +9,7 @@ movietest1:
 movietest2:
   title: test2
   release: 2019-12-01
-  production: アメリカ
+  production: イギリス
   screening_time: 149
   genre: ドキュメンタリー
   status: レンタル予定
@@ -17,7 +17,7 @@ movietest2:
 movietest3:
   title: test3
   release: 2019-12-01
-  production: アメリカ
+  production: スペイン
   screening_time: 149
   genre: アクション
   status: レンタル
@@ -25,7 +25,7 @@ movietest3:
 movietest4:
   title: test4
   release: 2015-12-01
-  production: アメリカ
+  production: シリア
   screening_time: 149
   genre: SF
   status: レンタル
@@ -33,7 +33,7 @@ movietest4:
 movietest5:
   title: test5
   release: 1996-07-26
-  production: アメリカ
+  production: カナダ
   screening_time: 149
   genre: コメディ
   status: レンタル
@@ -41,8 +41,7 @@ movietest5:
 movietest6:
   title: test6
   release: 1970-01-01
-  production: アメリカ
+  production: フランス
   screening_time: 149
   genre: ホラー
   status: レンタル
-  

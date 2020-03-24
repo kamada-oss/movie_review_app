@@ -20,6 +20,7 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select "a[href=?]", movie_path(movie)
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
       assert_select "a[href=?]", cast_path(@cast1)
       assert_select "a[href=?]", cast_path(@cast2)
       assert_select "a[href=?]", cast_path(@cast3)
@@ -58,6 +59,7 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select "a[href=?]", movie_path(movie)
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
       assert_select "a[href=?]", cast_path(@cast1), count: 0
       assert_select "a[href=?]", cast_path(@cast2), count: 0
       assert_select "a[href=?]", cast_path(@cast3), count: 0
@@ -96,6 +98,7 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select "a[href=?]", movie_path(movie)
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
       assert_select "a[href=?]", cast_path(@cast1), count: 0
       assert_select "a[href=?]", cast_path(@cast2), count: 0
       assert_select "a[href=?]", cast_path(@cast3), count: 0
@@ -124,7 +127,9 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
     end
+    assert_select "p", text: /2019/, minimum: 1
   end
   
   test "should show movies made in 2015 " do
@@ -134,7 +139,9 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
     end
+    assert_select "p", text: /2015/, minimum: 1
   end
   
   test "should show movies made in 1990s " do
@@ -144,7 +151,9 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
     end
+    
   end
   
   test "should show movies made in 1970s of lower" do
@@ -154,7 +163,9 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
     end
+    
   end
   
   
@@ -167,7 +178,12 @@ class MoviesListTest < ActionDispatch::IntegrationTest
     movies.each do |movie|
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
-      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/genre/suspense", minimum: 2
+    movies = Movie.where.not(genre:"サスペンス")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}", maximum: 1
     end
   end
   
@@ -178,6 +194,12 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/genre/documentary", minimum: 2
+    movies = Movie.where.not(genre:"ドキュメンタリー")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}", maximum: 1
     end
   end
   
@@ -188,6 +210,12 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/genre/action", minimum: 2
+    movies = Movie.where.not(genre:"アクション")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}", maximum: 1
     end
   end
   
@@ -198,6 +226,12 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/genre/SF", minimum: 2
+    movies = Movie.where.not(genre:"SF")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}", maximum: 1
     end
   end
   
@@ -208,6 +242,12 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/genre/comedy", minimum: 2
+    movies = Movie.where.not(genre:"コメディ")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}", maximum: 1
     end
   end
   
@@ -218,6 +258,102 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select 'h5', text: movie.title
       assert_select "a[href=?]", movie_path(movie)
       assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/genre/horror", minimum: 2
+    movies = Movie.where.not(genre:"ホラー")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}", maximum: 1
+    end
+  end
+  
+  test "should show american movies" do
+    get "/movies/list/production/america"
+    movies = Movie.where(production: "アメリカ")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/production/america", minimum: 2
+    movies = Movie.where.not(production: "アメリカ")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}", maximum: 1
+    end
+  end
+  
+  test "should show english movies" do
+    get "/movies/list/production/england"
+    movies = Movie.where(production: "イギリス")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/production/england", minimum: 2
+    movies = Movie.where.not(production: "イギリス")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}", maximum: 1
+    end
+  end
+  
+  test "should show spanich movies" do
+    get "/movies/list/production/spain"
+    movies = Movie.where(production: "スペイン")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/production/spain", minimum: 2
+    movies = Movie.where.not(production: "スペイン")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}", maximum: 1
+    end
+  end
+  
+  test "should show syrian movies" do
+    get "/movies/list/production/syria"
+    movies = Movie.where(production: "シリア")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/production/syria", minimum: 2
+    movies = Movie.where.not(production: "シリア")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}", maximum: 1
+    end
+  end
+  
+  test "should show canadian movies" do
+    get "/movies/list/production/canada"
+    movies = Movie.where(production: "カナダ")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/production/canada", minimum: 2
+    movies = Movie.where.not(production: "カナダ")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}", maximum: 1
+    end
+  end
+  
+  test "should show french movies" do
+    get "/movies/list/production/france"
+    movies = Movie.where(production: "フランス")
+    movies.each do |movie|
+      assert_select 'h5', text: movie.title
+      assert_select "a[href=?]", movie_path(movie)
+      assert_select "a[href=?]", "/movies/list/genre/#{movie.genre_translation}"
+    end
+    assert_select "a[href=?]", "/movies/list/production/france", minimum: 2
+    movies = Movie.where.not(production: "フランス")
+    movies.each do |movie|
+      assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}", maximum: 1
     end
   end
 end

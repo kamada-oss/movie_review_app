@@ -6,24 +6,44 @@
     <ul class="list-group">
       <li class="list-group-item list-group-item-secondary text-center sidebar_header"><strong>設定</strong></li>
       <% if yield(:title) == "プロフィール編集" %>
-        <%=link_to "プロフィール編集", "/users/#{@user.id}/edit_user_prof", class:"list-group-item list-group-item-action bg-secondary"%>
+        <%=link_to "/users/#{@user.id}/edit_user_prof", class:"list-group-item list-group-item-action bg-secondary" do%>
+          プロフィール編集<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <%else%> 
-        <%=link_to "プロフィール編集", "/users/#{@user.id}/edit_user_prof", class:"list-group-item list-group-item-action"%>
+        <%=link_to "/users/#{@user.id}/edit_user_prof", class:"list-group-item list-group-item-action" do%>
+          プロフィール編集<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <% end %>
       <% if yield(:title) == "アカウント情報" || yield(:title) == "メール設定" || yield(:title) == "パスワード設定" || yield(:title) == "退会"%>
-        <%=link_to "アカウント情報", "/users/#{@user.id}/edit_user_account", class:"list-group-item list-group-item-action bg-secondary"%>
+        <%=link_to "/users/#{@user.id}/edit_user_account", class:"list-group-item list-group-item-action bg-secondary" do%>
+          アカウント情報<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <%else%>
-        <%=link_to "アカウント情報", "/users/#{@user.id}/edit_user_account", class:"list-group-item list-group-item-action"%>
+        <%=link_to "/users/#{@user.id}/edit_user_account", class:"list-group-item list-group-item-action" do%>
+          アカウント情報<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <% end %>
       <% if yield(:title) == "ブロックしたユーザー" %>
-        <%=link_to "ブロックしたユーザー", '#', class:"list-group-item list-group-item-action bg-secondary"%>
+        <%=link_to '#', class:"list-group-item list-group-item-action bg-secondary" do%>
+          ブロックしたユーザー<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <%else%>
-        <%=link_to "ブロックしたユーザー", '#', class:"list-group-item list-group-item-action"%>
+        <%=link_to '#', class:"list-group-item list-group-item-action" do%>
+          ブロックしたユーザー<span class="float-right text-secondary">＞</span> 
+        <% end %>
       <% end %>
       <li class="list-group-item list-group-item-secondary text-center sidebar_header"><strong>Kamarksについて</strong></li>
-      <%=link_to "Kamarksの使い方", about_path, class:"list-group-item list-group-item-action"%>
-      <%=link_to "ヘルプ", help_path, class:"list-group-item list-group-item-action"%>
-      <%=link_to "利用規約", '#', class:"list-group-item list-group-item-action"%>
-      <%=link_to "プライバシーポリシー", '#', class:"list-group-item list-group-item-action"%>
+      <%=link_to about_path, class:"list-group-item list-group-item-action" do%>
+        Kamarksの使い方<span class="float-right text-secondary">＞</span> 
+      <% end %>
+      <%=link_to help_path, class:"list-group-item list-group-item-action" do%>
+        ヘルプ<span class="float-right text-secondary">＞</span> 
+      <% end %>
+      <%=link_to '#', class:"list-group-item list-group-item-action" do%>
+        利用規約<span class="float-right text-secondary">＞</span> 
+      <% end %>
+      <%=link_to '#', class:"list-group-item list-group-item-action" do%>
+        プライバシーポリシー<span class="float-right text-secondary">＞</span> 
+      <% end %>
     </ul>
   </div>
