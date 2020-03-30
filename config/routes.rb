@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get 'casts/show'
-
-  get 'writers/show'
-
-  get 'directors/show'
-
-  get 'actors/show'
-
   #home
   root 'static_pages#home'
   get  '/help', to:'static_pages#help'
@@ -63,4 +55,5 @@ Rails.application.routes.draw do
   resources :movies,              only: [:show]
   resources :dramas,              only: [:show]
   resources :casts,               only: [:show]
+  resources :reviews,             only: [:show]
 end

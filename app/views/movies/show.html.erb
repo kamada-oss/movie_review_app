@@ -42,3 +42,33 @@
     <% end %>
   </div>
 </div>
+<div class="col-md-8">
+  <div class="card card_top">
+    <div class="card-header text-secondary"><%="「#{@movie.title}」に投稿された感想・評価" %></div>
+    <div class="card-body movie_list">
+      <% @reviews.each do |review| %>
+        <% user = review.user%>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3 movie_image">
+                <% if user.picture.nil?%>
+                  <%= gravatar_for user %>
+                <%else%>
+                  <%= image_tag user.picture, size: "150x200"%>
+                <% end %>
+              </div>
+              <div class="col-md-9 movie_text">
+                <p class="card-text font-weight-bold"><%="#{user.nickname}の感想・評価"%></p>
+                <p class="card-text text-secondary"><%=review.create_date%></p>
+                <p class="card-text text-secondary"><%="評価：#{review.evaluation}"%></p>
+              </div>
+            </div>  
+            <%=review.comment%>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @reviews, theme: 'twitter-bootstrap-4'%>
+    </div>
+  </div>
+</div>

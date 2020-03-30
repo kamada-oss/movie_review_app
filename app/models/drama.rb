@@ -3,6 +3,8 @@ class Drama < ApplicationRecord
   attr_accessor :production_translated
   has_many :drama_casts
    has_many :casts, through: :drama_casts
+  has_many :reviews
+   has_many :users, through: :reviews
    validates :title, presence: true, uniqueness: true
    
   def genre_translation

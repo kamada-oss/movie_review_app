@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
+  has_many :reviews,dependent: :destroy
+   has_many :movies, through: :reviews
+   has_many :dramas, through: :reviews
   before_save :downcase_email
   #before_create :create_activation_digest
   validates :name, presence:true, length:{maximum:15},
