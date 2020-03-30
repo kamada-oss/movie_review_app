@@ -1,12 +1,10 @@
-class Movie < ApplicationRecord
-  #mount_uploader :picture, PictureUploader
+class Drama < ApplicationRecord
   attr_accessor :genre_translated
   attr_accessor :production_translated
-  
-  has_many :movie_casts
-   has_many :casts, through: :movie_casts
-  validates :title, presence: true, uniqueness: true
-  
+  has_many :drama_casts
+   has_many :casts, through: :drama_casts
+   validates :title, presence: true, uniqueness: true
+   
   def genre_translation
     case genre
     when "サスペンス" then

@@ -1,32 +1,9 @@
 <% provide(:title, "#{@cast.name}が監督・出演する映画作品")%>
-<div class="row mt-3">
-  <div class="col-md-auto">
-    <% if @cast.picture.nil?%>
-      <%= image_tag 'no_image.jpg', size: "100x100" %>
-    <%else%>
-      <%= image_tag @cast.picture, size: "100x100"%>
-    <% end %>
-  </div>
-  <div class="col-md-auto">
-    <h5 class="font-weight-bold"><%=@cast.name%></h5>
-    <% if @cast.country == "不明" %>
-      <p class="text-secondary">不明</p>
-    <% elsif @cast.hometown == "不明" %>
-      <p class="text-secondary"><%=@cast.country%></p>
-    <% else %>
-      <p class="text-secondary"><%=@cast.country%>／<%=@cast.hometown%></p>
-    <% end %>
-  </div>
-  <div class="col-md">
-    <p class="text-secondary float-right">Fanが<span class="font-weight-bold">100</span>人います。
-    <%= link_to "Fan!", "#", class: "btn btn-danger btn-sm cast_name" %>
-    </p>
-  </div>
-</div>
+<%=render("shared/cast_show.html.erb")%>
 <div class="d-flex justify-content-center mt-5 mb-4">
   <div class="btn-group" role="group" aria-label="Basic example">
     <%= link_to "映画(#{@movies_unique.count})", @cast, class: "btn btn-dark pl-4 pr-4" %>
-    <%= link_to "ドラマ(0)", "#", class: "btn btn-secondary pl-3 pr-3" %>
+    <%= link_to "ドラマ(#{@dramas_unique.count})", "/casts/drama/#{@cast.id}", class: "btn btn-secondary pl-3 pr-3" %>
   </div>
 </div>
 <div class="card card_top">
@@ -36,17 +13,19 @@
       <div class="card-body">
         <% @movies_unique.each_slice(4) do |first_movie, second_movie, third_movie, fourth_movie| %>
           <div class="row">
-            <div class="col-md-3 pl-5">
-              <% if @cast.picture.nil?%>
-                <%= link_to image_tag('no_image.jpg', size: "170x230"), first_movie %>
-              <%else%>
-                <%= image_tag first_movie.picture, size: "170x230"%>
-              <% end %>
-              <p class="font-weight-bold small pl-2"><%= first_movie.title%></p>
-            </div>
+            <% unless first_movie.nil? %>
+              <div class="col-md-3 pl-5">
+                <% if first_movie.picture.nil?%>
+                  <%= link_to image_tag('no_image.jpg', size: "170x230"), first_movie %>
+                <%else%>
+                  <%= image_tag first_movie.picture, size: "170x230"%>
+                <% end %>
+                <p class="font-weight-bold small pl-2"><%= first_movie.title%></p>
+              </div>
+            <% end %>
             <% unless second_movie.nil? %>
               <div class="col-md-3 pl-5">
-                <% if @cast.picture.nil?%>
+                <% if second_movie.picture.nil?%>
                   <%= link_to image_tag('no_image.jpg', size: "170x230"), second_movie %>
                 <%else%>
                   <%= image_tag second_movie.picture, size: "170x230"%>
@@ -56,7 +35,7 @@
             <% end %>
             <% unless third_movie.nil? %>
               <div class="col-md-3 pl-5">
-                <% if @cast.picture.nil?%>
+                <% if third_movie.picture.nil?%>
                   <%= link_to image_tag('no_image.jpg', size: "170x230"), third_movie %>
                 <%else%>
                   <%= image_tag third_movie.picture, size: "170x230"%>
@@ -66,7 +45,7 @@
             <% end %>
             <% unless fourth_movie.nil? %>
               <div class="col-md-3 pl-5">
-                <% if @cast.picture.nil?%>
+                <% if fourth_movie.picture.nil?%>
                   <%= link_to image_tag('no_image.jpg', size: "170x230"), fourth_movie %>
                 <%else%>
                   <%= image_tag fourth_movie.picture, size: "170x230"%>

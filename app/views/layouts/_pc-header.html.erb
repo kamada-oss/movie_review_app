@@ -13,6 +13,10 @@
                 <li class="header_list"><%=link_to "上映中の映画", movies_list_now_path %></li>
                 <li class="header_list"><%=link_to "レンタル開始予定の映画", movies_list_rental_coming_path%></li>
                 <li class="header_list"><%=link_to "レンタル", movies_list_rental_now_path %></li>
+                <li class="header_list"><%=link_to "今話題のおすすめ映画", "#" %></li>
+                <li class="header_list"><%=link_to "製作年（年代）", "/movies/list/year/2019" %></li>
+                <li class="header_list"><%=link_to "製作国", "/movies/list/production/america" %></li>
+                <li class="header_list"><%=link_to "ジャンル", "/movies/list/genre/suspense" %></li>
               </ul>
             </div>
           </li>
@@ -23,9 +27,13 @@
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li class="header_list"><%=link_to "放送中のドラマ", '#'%></li>
-                <li class="header_list"><%=link_to "放送予定のドラマ", '#'%></li>
-                <li class="header_list"><%=link_to "レンタル", '#'%></li>
+                <li class="header_list"><%=link_to "放送中のドラマ", dramas_list_now_path%></li>
+                <li class="header_list"><%=link_to "放送予定のドラマ", dramas_list_rental_coming_path%></li>
+                <li class="header_list"><%=link_to "レンタル", dramas_list_rental_now_path%></li>
+                <li class="header_list"><%=link_to "今話題のおすすめドラマ", "#" %></li>
+                <li class="header_list"><%=link_to "製作年（年代）", "/dramas/list/year/2019" %></li>
+                <li class="header_list"><%=link_to "製作国", "/dramas/list/production/america" %></li>
+                <li class="header_list"><%=link_to "ジャンル", "/dramas/list/genre/suspense" %></li>                
               </ul>
             </div>
           </li>

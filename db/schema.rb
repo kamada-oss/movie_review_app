@@ -10,12 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200322071842) do
+ActiveRecord::Schema.define(version: 20200329104948) do
 
   create_table "casts", force: :cascade do |t|
     t.string "name"
     t.string "country"
     t.string "hometown"
+    t.string "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "drama_casts", force: :cascade do |t|
+    t.string "relation"
+    t.integer "drama_id"
+    t.integer "cast_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cast_id"], name: "index_drama_casts_on_cast_id"
+    t.index ["drama_id"], name: "index_drama_casts_on_drama_id"
+  end
+
+  create_table "dramas", force: :cascade do |t|
+    t.string "title"
+    t.date "release"
+    t.string "production"
+    t.string "genre"
+    t.string "status"
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

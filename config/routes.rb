@@ -45,10 +45,22 @@ Rails.application.routes.draw do
   get 'movies/list/year/:year', to:'movies#year' 
   get 'movies/list/genre/:genre', to:'movies#genre' 
   get 'movies/list/production/:production', to:'movies#production' 
+  #drama
+  get 'dramas/list', to:'dramas#list'
+  get 'dramas/list/now', to:'dramas#now'
+  get 'dramas/list/rental_coming', to:'dramas#rental_coming'
+  get 'dramas/list/rental_now', to:'dramas#rental_now'
+  #get 'dramas/list/recommended', to:'dramas#recommended'
+  get 'dramas/list/year/:year', to:'dramas#year' 
+  get 'dramas/list/genre/:genre', to:'dramas#genre' 
+  get 'dramas/list/production/:production', to:'dramas#production' 
+  #cast
+  get 'casts/drama/:id', to:'casts#show_drama'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :email_resets,        only: [:edit]
   resources :movies,              only: [:show]
+  resources :dramas,              only: [:show]
   resources :casts,               only: [:show]
 end

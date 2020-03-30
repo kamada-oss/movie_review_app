@@ -1,0 +1,63 @@
+<div class="card card_top">
+  <div class="card-header text-center font-weight-bold"><%=yield(:title)%></div>
+</div>
+<div class="row">
+  <div class="col-md-4 mt-4">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-secondary text-center sidebar_header"><strong>製作国で探す</strong></li>
+      <% if yield(:title) == "アメリカのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/production/america", class:"list-group-item list-group-item-action bg-secondary" do%>
+          アメリカ(<%=Drama.where(production: "アメリカ").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/dramas/list/production/america", class:"list-group-item list-group-item-action" do%>
+          アメリカ(<%=Drama.where(production: "アメリカ").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+      <% if yield(:title) == "イギリスのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/production/england", class:"list-group-item list-group-item-action bg-secondary" do%>
+          イギリス(<%=Drama.where(production: "イギリス").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>      
+      <%else%>
+        <%=link_to "/dramas/list/production/england", class:"list-group-item list-group-item-action" do%>
+          イギリス(<%=Drama.where(production: "イギリス").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>  
+      <% end %>
+      <% if yield(:title) == "スペインのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/production/spain", class:"list-group-item list-group-item-action bg-secondary" do%>
+          スペイン(<%=Drama.where(production: "スペイン").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>  
+      <%else%>
+        <%=link_to "/dramas/list/production/spain", class:"list-group-item list-group-item-action" do%>
+          スペイン(<%=Drama.where(production: "スペイン").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %> 
+      <% end %>
+      <% if yield(:title) == "シリアのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/production/syria", class:"list-group-item list-group-item-action bg-secondary" do%>
+          シリア(<%=Drama.where(production: "シリア").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/dramas/list/production/syria", class:"list-group-item list-group-item-action" do%>
+          シリア(<%=Drama.where(production: "シリア").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+      <% if yield(:title) == "カナダのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/production/canada", class:"list-group-item list-group-item-action bg-secondary" do%>
+          カナダ(<%=Drama.where(production: "カナダ").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/dramas/list/production/canada", class:"list-group-item list-group-item-action" do%>
+          カナダ(<%=Drama.where(production: "カナダ").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+            <% if yield(:title) == "フランスのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/production/france", class:"list-group-item list-group-item-action bg-secondary" do%>
+          フランス(<%=Drama.where(production: "フランス").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/dramas/list/production/france", class:"list-group-item list-group-item-action" do%>
+          フランス(<%=Drama.where(production: "フランス").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+    </ul>
+  </div>

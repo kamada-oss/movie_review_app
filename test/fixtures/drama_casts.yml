@@ -1,0 +1,46 @@
+drama_casttest1:
+  relation: director
+  drama_id: 483089713
+  cast_id: 503687030
+  
+drama_casttest2:
+  relation: writer
+  drama_id: 483089713
+  cast_id: 118290126
+
+drama_casttest3:
+  relation: actor
+  drama_id: 483089713
+  cast_id: 806078041
+  
+drama_casttest4:
+  relation: director
+  drama_id: 96603285
+  cast_id: 779047934
+  
+drama_casttest5:
+  relation: writer
+  drama_id: 96603285
+  cast_id: 426271599
+
+drama_casttest6:
+  relation: actor
+  drama_id: 96603285
+  cast_id: 6370007
+ 
+drama_casttest7:
+  relation: director
+  drama_id: 851786756
+  cast_id: 929432130
+  
+drama_casttest8:
+  relation: writer
+  drama_id: 851786756
+  cast_id: 668540883
+
+drama_casttest9:
+  relation: actor
+  drama_id: 851786756
+  cast_id: 282996552 
+
+  

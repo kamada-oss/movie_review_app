@@ -1,13 +1,12 @@
-class CreateMovies < ActiveRecord::Migration[5.1]
+class CreateDramas < ActiveRecord::Migration[5.1]
   def change
-    create_table :movies do |t|
+    create_table :dramas do |t|
       t.string :title
       t.date :release
       t.string :production
-      t.integer :screening_time
       t.string :genre
       t.string :status
-      
+      t.string :picture
 
       t.timestamps
     end

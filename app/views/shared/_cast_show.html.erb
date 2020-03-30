@@ -1,0 +1,24 @@
+<div class="row mt-3">
+  <div class="col-md-auto">
+    <% if @cast.picture.nil?%>
+      <%= image_tag 'no_image.jpg', size: "100x100" %>
+    <%else%>
+      <%= image_tag @cast.picture, size: "100x100"%>
+    <% end %>
+  </div>
+  <div class="col-md-auto">
+    <h5 class="font-weight-bold"><%=@cast.name%></h5>
+    <% if @cast.country == "不明" %>
+      <p class="text-secondary">不明</p>
+    <% elsif @cast.hometown == "不明" %>
+      <p class="text-secondary"><%=@cast.country%></p>
+    <% else %>
+      <p class="text-secondary"><%=@cast.country%>／<%=@cast.hometown%></p>
+    <% end %>
+  </div>
+  <div class="col-md">
+    <p class="text-secondary float-right">Fanが<span class="font-weight-bold">100</span>人います。
+    <%= link_to "Fan!", "#", class: "btn btn-danger btn-sm cast_name" %>
+    </p>
+  </div>
+</div>

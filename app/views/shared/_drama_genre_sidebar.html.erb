@@ -1,0 +1,63 @@
+<div class="card card_top">
+  <div class="card-header text-center font-weight-bold"><%=yield(:title)%></div>
+</div>
+<div class="row">
+  <div class="col-md-4 mt-4">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-secondary text-center sidebar_header"><strong>ジャンルで探す</strong></li>
+      <% if yield(:title) == "サスペンスのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/genre/suspense", class:"list-group-item list-group-item-action bg-secondary" do%>
+          サスペンス(<%=Drama.where(genre: "サスペンス").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/dramas/list/genre/suspense", class:"list-group-item list-group-item-action" do%>
+          サスペンス(<%=Drama.where(genre: "サスペンス").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+      <% if yield(:title) == "ドキュメンタリーのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/genre/documentary", class:"list-group-item list-group-item-action bg-secondary" do%>
+          ドキュメンタリー(<%=Drama.where(genre: "ドキュメンタリー").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>      
+      <%else%>
+        <%=link_to "/dramas/list/genre/documentary", class:"list-group-item list-group-item-action" do%>
+          ドキュメンタリー(<%=Drama.where(genre: "ドキュメンタリー").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>  
+      <% end %>
+      <% if yield(:title) == "アクションのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/genre/action", class:"list-group-item list-group-item-action bg-secondary" do%>
+          アクション(<%=Drama.where(genre: "アクション").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>  
+      <%else%>
+        <%=link_to "/dramas/list/genre/action", class:"list-group-item list-group-item-action" do%>
+          アクション(<%=Drama.where(genre: "アクション").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %> 
+      <% end %>
+      <% if yield(:title) == "SFのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/genre/SF", class:"list-group-item list-group-item-action bg-secondary" do%>
+          SF(<%=Drama.where(genre: "SF").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/dramas/list/genre/SF", class:"list-group-item list-group-item-action" do%>
+          SF(<%=Drama.where(genre: "SF").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+      <% if yield(:title) == "コメディのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/genre/comedy", class:"list-group-item list-group-item-action bg-secondary" do%>
+          コメディ(<%=Drama.where(genre: "コメディ").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/dramas/list/genre/comedy", class:"list-group-item list-group-item-action" do%>
+          コメディ(<%=Drama.where(genre: "コメディ").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+      <% if yield(:title) == "ホラーのおすすめドラマ作品" %>
+        <%=link_to "/dramas/list/genre/horror", class:"list-group-item list-group-item-action bg-secondary" do%>
+          ホラー(<%=Drama.where(genre: "ホラー").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <%else%>
+        <%=link_to "/dramas/list/genre/horror", class:"list-group-item list-group-item-action" do%>
+          ホラー(<%=Drama.where(genre: "ホラー").count %> 件) <span class="float-right text-secondary">＞</span> 
+        <% end %>
+      <% end %>
+    </ul>
+  </div>

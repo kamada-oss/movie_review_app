@@ -1,0 +1,61 @@
+<% provide(:title, "#{@cast.name}が監督・出演するドラマ作品")%>
+<%=render("shared/cast_show.html.erb")%>
+<div class="d-flex justify-content-center mt-5 mb-4">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <%= link_to "映画(#{@movies_unique.count})", @cast, class: "btn btn-secondary pl-4 pr-4" %>
+    <%= link_to "ドラマ(#{@dramas_unique.count})", "/casts/drama/#{@cast.id}", class: "btn btn-dark pl-3 pr-3" %>
+  </div>
+</div>
+<div class="card card_top">
+  <div class="card-header text-center"><%=@cast.name%>の出演ドラマ・関連ドラマ</div>
+  <div class="card-body">
+    <div class="card card_top">
+      <div class="card-body">
+        <% @dramas_unique.each_slice(4) do |first_drama, second_drama, third_drama, fourth_drama| %>
+          <div class="row">
+            <% unless first_drama.nil? %>
+              <div class="col-md-3 pl-5">
+                <% if first_drama.picture.nil?%>
+                  <%= link_to image_tag('no_image.jpg', size: "170x230"), first_drama %>
+                <%else%>
+                  <%= image_tag first_drama.picture, size: "170x230"%>
+                <% end %>
+                <p class="font-weight-bold small pl-2"><%= first_drama.title%></p>
+              </div>
+            <% end %>
+            <% unless second_drama.nil? %>
+              <div class="col-md-3 pl-5">
+                <% if second_drama.picture.nil?%>
+                  <%= link_to image_tag('no_image.jpg', size: "170x230"), second_drama %>
+                <%else%>
+                  <%= image_tag second_drama.picture, size: "170x230"%>
+                <% end %>
+                <p class="font-weight-bold small pl-2"><%= second_drama.title%></p>
+              </div>
+            <% end %>
+            <% unless third_drama.nil? %>
+              <div class="col-md-3 pl-5">
+                <% if third_drama.picture.nil?%>
+                  <%= link_to image_tag('no_image.jpg', size: "170x230"), third_drama %>
+                <%else%>
+                  <%= image_tag third_drama.picture, size: "170x230"%>
+                <% end %>
+                <p class="font-weight-bold small pl-2"><%= third_drama.title%></p>
+              </div>
+            <% end %>
+            <% unless fourth_drama.nil? %>
+              <div class="col-md-3 pl-5">
+                <% if fourth_drama.picture.nil?%>
+                  <%= link_to image_tag('no_image.jpg', size: "170x230"), fourth_drama %>
+                <%else%>
+                  <%= image_tag fourth_drama.picture, size: "170x230"%>
+                <% end %>
+                <p class="font-weight-bold small pl-2"><%= fourth_drama.title%></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

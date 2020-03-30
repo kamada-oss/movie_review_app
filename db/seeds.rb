@@ -42,7 +42,7 @@ CSV.foreach('db/movies.csv', headers: true) do |row|
     production: row['production'],
     screening_time: row['screening_time'],
     genre: row['genre'],
-    status: row['status'],
+    status: row['status']
   )
 end
 
@@ -60,6 +60,26 @@ CSV.foreach('db/movie_casts.csv', headers: true) do |row|
   MovieCast.create(
     relation: row['relation'],
     movie_id: row['movie_id'],
+    cast_id: row['cast_id']
+  )
+end
+
+#dramaをcsv経由で追加する
+CSV.foreach('db/dramas.csv', headers: true) do |row|
+  Drama.create(
+    title: row['title'],
+    release: row['release'],
+    production: row['production'],
+    genre: row['genre'],
+    status: row['status']
+  )
+end
+
+#drama_castをcsv経由で追加する
+CSV.foreach('db/drama_casts.csv', headers: true) do |row|
+  DramaCast.create(
+    relation: row['relation'],
+    drama_id: row['drama_id'],
     cast_id: row['cast_id']
   )
 end

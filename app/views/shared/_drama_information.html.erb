@@ -1,0 +1,63 @@
+<div class="col-md-8">
+  <div class="card card_top">
+    <div class="card-header text-secondary">おすすめ順</div>
+    <div class="card-body movie_list">
+      <% @dramas.each do |drama| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3 movie_image">
+                <% if drama.picture.nil?%>
+                  <%= image_tag 'no_image.jpg', size: "150x200" %>
+                <%else%>
+                  <%= image_tag drama.picture, size: "150x200"%>
+                <% end %>
+              </div>
+              <div class="col-md-9 movie_text">
+                <h5 class="font-weight-bold card-title"><%= drama.title%></h5>
+                <p class="card-text">
+                  <span class="font-weight-bold">上映日：</span><%= "#{drama.release.year}年#{drama.release.mon}月#{drama.release.day}日"%> ／
+                  <span class="font-weight-bold">製作国：</span><%= link_to drama.production, "/dramas/list/production/#{drama.production_translation}"%> 
+                </p>
+                <p class="card-text">
+                  <span class="font-weight-bold">ジャンル：</span><%= link_to drama.genre, "/dramas/list/genre/#{drama.genre_translation}"%>
+                </p>
+                <div class="row">
+                  <div class="col-md-auto">
+                    <p class="mt-2"><span class="font-weight-bold">監督</span></p>
+                    <% director_ids = drama.drama_casts.where(relation: "director").select(:cast_id)%>
+                    <% Cast.where(id: director_ids).each do |director| %>
+                      <%= link_to director.name, "/casts/drama/#{director.id}", class: "btn btn-light btn-sm cast_name" %>
+                    <% end %>
+                  </div>
+                  <div class="col-md-auto">
+                    <p class="mt-2"><span class="font-weight-bold">脚本</span></p>
+                    <% writer_ids = drama.drama_casts.where(relation: "writer").select(:cast_id)%>
+                    <% Cast.where(id: writer_ids).each do |writer| %>
+                      <%= link_to writer.name, "/casts/drama/#{writer.id}", class: "btn btn-light btn-sm cast_name" %>
+                    <% end %>
+                  </div>
+                </div>
+                <p class="mt-2"><span class="font-weight-bold">出演者</span></p>
+                <% count = 1 %>
+                <% actor_ids = drama.drama_casts.where(relation: "actor").select(:cast_id)%>
+                <% actor_ids.each do |actor_id| %>
+                  <% if count <= 2%>
+                    <% actor = Cast.find(actor_id.cast_id) %>
+                    <%= link_to actor.name, "/casts/drama/#{actor.id}", class: "btn btn-light btn-sm cast_name mt-2 mr-1" %>
+                  <% end %>
+                  <% count += 1%>
+                <% end %>
+                <div class="d-block mt-2">
+                <%= link_to ">>詳しい情報を見る", drama, class:"float-right cast_name"%>
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
+      <% end %>
+      <%= paginate @dramas, theme: 'twitter-bootstrap-4'%>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,7 @@
+<% if @year.to_i > 2000%>
+  <% provide(:title, "#{@year}年製作のおすすめドラマ作品")%>
+<% else %>
+  <% provide(:title, "#{@year}年代製作のおすすめドラマ作品")%>
+<% end %>
+<%=render("shared/drama_year_sidebar.html.erb")%>
+<%=render("shared/drama_information.html.erb")%>

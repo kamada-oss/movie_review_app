@@ -1,0 +1,79 @@
+<div class="card card_top">
+  <div class="card-header text-center font-weight-bold"><%=yield(:title)%></div>
+</div>
+<div class="row">
+  <div class="col-md-4 mt-4">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-secondary text-center sidebar_header"><strong>製作年で探す</strong></li>
+      <% if yield(:title) == "2019年製作のおすすめドラマ作品" %>
+        <%=link_to "2019年(#{Drama.where(release: "2019/01/01".."2019/12/31").count}件)", "/dramas/list/year/2019", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "2019年(#{Drama.where(release: "2019/01/01".."2019/12/31").count}件)", "/dramas/list/year/2019", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "2018年製作のおすすめドラマ作品" %>
+        <%=link_to "2018年(#{Drama.where(release: "2018/01/01".."2018/12/31").count}件)", "/dramas/list/year/2018", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "2018年(#{Drama.where(release: "2018/01/01".."2018/12/31").count}件)", "/dramas/list/year/2018", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "2017年製作のおすすめドラマ作品" %>
+        <%=link_to "2017年(#{Drama.where(release: "2017/01/01".."2017/12/31").count}件)", "/dramas/list/year/2017", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "2017年(#{Drama.where(release: "2017/01/01".."2017/12/31").count}件)", "/dramas/list/year/2017", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "2016年製作のおすすめドラマ作品" %>
+        <%=link_to "2016年(#{Drama.where(release: "2016/01/01".."2016/12/31").count}件)", "/dramas/list/year/2016", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "2016年(#{Drama.where(release: "2016/01/01".."2016/12/31").count}件)", "/dramas/list/year/2016", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "2015年製作のおすすめドラマ作品" %>
+        <%=link_to "2015年(#{Drama.where(release: "2015/01/01".."2015/12/31").count}件)", "/dramas/list/year/2015", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "2015年(#{Drama.where(release: "2015/01/01".."2015/12/31").count}件)", "/dramas/list/year/2015", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "2014年製作のおすすめドラマ作品" %>
+        <%=link_to "2014年(#{Drama.where(release: "2014/01/01".."2014/12/31").count}件)", "/dramas/list/year/2014", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "2014年(#{Drama.where(release: "2014/01/01".."2014/12/31").count}件)", "/dramas/list/year/2014", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "2013年製作のおすすめドラマ作品" %>
+        <%=link_to "2013年(#{Drama.where(release: "2013/01/01".."2013/12/31").count}件)", "/dramas/list/year/2013", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "2013年(#{Drama.where(release: "2013/01/01".."2013/12/31").count}件)", "/dramas/list/year/2013", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "2012年製作のおすすめドラマ作品" %>
+        <%=link_to "2012年(#{Drama.where(release: "2012/01/01".."2012/12/31").count}件)", "/dramas/list/year/2012", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "2012年(#{Drama.where(release: "2012/01/01".."2012/12/31").count}件)", "/dramas/list/year/2012", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "2011年製作のおすすめドラマ作品" %>
+        <%=link_to "2011年(#{Drama.where(release: "2011/01/01".."2011/12/31").count}件)", "/dramas/list/year/2011", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "2011年(#{Drama.where(release: "2011/01/01".."2011/12/31").count}件)", "/dramas/list/year/2011", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "2010年製作のおすすめドラマ作品" %>
+        <%=link_to "2010年(#{Drama.where(release: "2010/01/01".."2010/12/31").count}件)", "/dramas/list/year/2010", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "2010年(#{Drama.where(release: "2010/01/01".."2010/12/31").count}件)", "/dramas/list/year/2010", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "2000年代製作のおすすめドラマ作品" %>
+        <%=link_to "2000年代(#{Drama.where(release: "2000/01/01".."2009/12/31").count}件)", "/dramas/list/year/2000", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "2000年代(#{Drama.where(release: "2000/01/01".."2009/12/31").count}件)", "/dramas/list/year/2000", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "1990年代製作のおすすめドラマ作品" %>
+        <%=link_to "1990年代(#{Drama.where(release: "1990/01/01".."1999/12/31").count}件)", "/dramas/list/year/1990", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "1990年代(#{Drama.where(release: "1990/01/01".."1999/12/31").count}件)", "/dramas/list/year/1990", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "1980年代製作のおすすめドラマ作品" %>
+        <%=link_to "1980年代(#{Drama.where(release: "1980/01/01".."1989/12/31").count}件)", "/dramas/list/year/1980", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "1980年代(#{Drama.where(release: "1980/01/01".."1989/12/31").count}件)", "/dramas/list/year/1980", class:"list-group-item list-group-item-action"%>
+      <% end %>
+      <% if yield(:title) == "1970年代製作のおすすめドラマ作品" %>
+        <%=link_to "1970年代(#{Drama.where(release: "1970/01/01".."1979/12/31").count}件)", "/dramas/list/year/1970", class:"list-group-item list-group-item-action bg-secondary"%>
+      <%else%>
+        <%=link_to "1970年代(#{Drama.where(release: "1970/01/01".."1979/12/31").count}件)", "/dramas/list/year/1970", class:"list-group-item list-group-item-action"%>
+      <% end %>
+    </ul>
+  </div>
