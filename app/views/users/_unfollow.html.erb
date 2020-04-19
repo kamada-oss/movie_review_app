@@ -1,0 +1,6 @@
+<%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
+             html: { method: :delete }) do |f| %>
+  <%= button_tag :type => "submit", :class =>"btn btn-secondary" do %>
+    <i class="fas fa-user-check"></i>フォロー中
+  <% end %>
+<% end %>

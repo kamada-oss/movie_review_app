@@ -1,0 +1,53 @@
+  <div class="col-md-6">
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md">
+            <%= gravatar_for user, 50 %>
+            <%= link_to user.nickname, user %>
+            <% if logged_in?%>
+              <% if current_user.admin? && !current_user?(user)%>
+                | <%= link_to "ユーザーを削除", user, method: :delete, data: { confirm: "本当にユーザを削除してよろしいですか？" } %>
+              <% end %>
+            <% end %>
+            <p class="text-secondary h6"><small><%="@" + user.name %></small></p>
+          </div>
+        </div>
+        <div class="row mt-2 mb-2">
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col-md text-secondary">
+                followers
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md">
+                <%= user.followers.count%>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 show_follow">
+            <div class="row">
+              <div class="col-md text-secondary">
+                following
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md">
+                <%= user.following.count%>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 show_follow">
+            <%= render partial:'follow_form', locals:{user: user} if logged_in? %>
+            <!--<button type="button" class="btn btn-secondary"><i class="fas fa-user-plus"></i></button>-->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md">
+            <%= gravatar_for user, 100 %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -48,6 +48,11 @@ Rails.application.routes.draw do
   get 'dramas/list/production/:production', to:'dramas#production' 
   #cast
   get 'casts/drama/:id', to:'casts#show_drama'
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
@@ -56,4 +61,5 @@ Rails.application.routes.draw do
   resources :dramas,              only: [:show]
   resources :casts,               only: [:show]
   resources :reviews,             only: [:show]
+  resources :relationships,       only: [:create, :destroy]
 end

@@ -83,3 +83,16 @@ CSV.foreach('db/drama_casts.csv', headers: true) do |row|
     cast_id: row['cast_id']
   )
 end
+
+
+# リレーションシップ
+users = User.all
+users.each do |user|
+  r = rand(101)
+  following = users[0..101].sample(r)
+  following.each do |followed|
+    unless user.id == followed.id
+      user.follow(followed)
+    end
+  end
+end

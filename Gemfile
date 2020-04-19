@@ -18,6 +18,7 @@ gem 'carrierwave',             '1.2.2'
 gem 'mini_magick',             '4.7.0'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'font-awesome-sass', '~> 5.4.1'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'
