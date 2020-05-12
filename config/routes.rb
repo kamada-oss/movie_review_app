@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  #home
+  # home
   root 'static_pages#home'
   get  '/help', to:'static_pages#help'
   get  '/about', to:'static_pages#about'
-  #signup
+  # user
+  # signup
   get  '/send_activation_email', to:'users#enter_activaton_email'
   post '/send_activation_email', to:'users#send_activaton_email'
   get  '/authenticate_authcode', to:'users#enter_authcode'
@@ -12,11 +13,11 @@ Rails.application.routes.draw do
   post '/signup',  to:'users#create'
   get  '/confirm', to:'users#confirm'
   post '/confirm', to:'users#confirm'
-  #login
+  # login
   get  '/login', to:'sessions#new'
   post '/login', to:'sessions#create'
   delete  '/logout', to:'sessions#destroy'
-  #users_edit
+  # users_edit
   get 'users/:id/edit_user_prof', to:'users#edit_prof'
   patch '/users/:id/edit_user_prof', to:'users#update_prof'
   get 'users/:id/edit_user_account', to:'users#edit_account'
@@ -28,16 +29,16 @@ Rails.application.routes.draw do
   get 'email_resets/:id/new', to:'email_resets#new'
   post 'email_resets/:id/create', to:'email_resets#create'
   post '/email_resets/:id/update', to:'email_resets#update'
-  #movie
+  # movie
   get 'movies/list', to:'movies#list'
   get 'movies/list/now', to:'movies#now'
   get 'movies/list/rental_coming', to:'movies#rental_coming'
   get 'movies/list/rental_now', to:'movies#rental_now'
-  #get 'movies/list/recommended', to:'movies#recommended'
+  # get 'movies/list/recommended', to:'movies#recommended'
   get 'movies/list/year/:year', to:'movies#year' 
   get 'movies/list/genre/:genre', to:'movies#genre' 
   get 'movies/list/production/:production', to:'movies#production' 
-  #drama
+  # drama
   get 'dramas/list', to:'dramas#list'
   get 'dramas/list/now', to:'dramas#now'
   get 'dramas/list/rental_coming', to:'dramas#rental_coming'
@@ -46,7 +47,7 @@ Rails.application.routes.draw do
   get 'dramas/list/year/:year', to:'dramas#year' 
   get 'dramas/list/genre/:genre', to:'dramas#genre' 
   get 'dramas/list/production/:production', to:'dramas#production' 
-  #cast
+  # cast
   get 'casts/drama/:id', to:'casts#show_drama'
   resources :users do
     member do
