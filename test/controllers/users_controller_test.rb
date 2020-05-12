@@ -108,4 +108,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_url
   end
+  
+  test "should not display follow-btn when not login in user show" do
+    get user_path(@user)
+    assert_select 'form.edit_relationship', count: 0
+    assert_select 'form.new_relationship', count: 0
+  end
+  
+  test "should display follow-btn when login in user show" do
+    log_in_as(@user)
+    get user_path(@other_user)
+    assert_select 'form.new_relationship'
+  end
+
 end

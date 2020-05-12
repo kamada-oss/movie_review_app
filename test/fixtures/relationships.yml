@@ -1,0 +1,19 @@
+one:
+  follower: michael
+  followed: tanakataro
+
+two:
+  follower: michael
+  followed: satouhanako
+
+three:
+  follower: satouhanako
+  followed: michael
+
+four:
+  follower: arata
+  followed: michael
+  
+five:
+  follower: tanakataro
+  followed: arata

@@ -16,7 +16,7 @@
       <%= link_to "プロフィール編集", "/users/#{@user.id}/edit_user_prof", class: "btn btn-secondary profile_edit_btn" %>
     <% else %>
       <div class="mt-3">
-        <%= render partial:'follow_form', locals:{user: @user} %>
+        <%= render partial:'follow_form', locals:{user: @user} if logged_in? %>
       </div>
     <% end %>
   </div>

@@ -26,4 +26,18 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     get users_path
     assert_select 'a', text: 'ユーザーを削除', count: 0
   end
+    
+  test "should not display follow-btn when not login in user index" do
+    get users_path
+    assert_select 'form.edit_relationship', count: 0
+    assert_select 'form.new_relationship', count: 0
+  end
+  
+  test "should display follow-btn when login in user index" do
+    user = users(:tanakataro)
+    log_in_as(user)
+    get users_path
+    assert_select 'form.edit_relationship'
+    assert_select 'form.new_relationship'
+  end
 end

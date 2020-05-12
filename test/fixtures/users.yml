@@ -25,6 +25,24 @@ michael:
   agreement: true
   activated: true
   activated_at: <%= Time.zone.now %>
+
+arata:
+  name: Arata Okada
+  email: arata@example.com
+  password_digest: <%= User.digest('password') %>
+  nickname: ara
+  agreement: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+teppei:
+  name: Teppei Maruyama
+  email: teppei@example.com
+  password_digest: <%= User.digest('password') %>
+  nickname: teppe
+  agreement: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
   
   
 <% 29.times do |n| %>
