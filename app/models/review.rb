@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   belongs_to :drama, optional: true
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
-  validates :evaluation, presence: true
+  validates :star, presence: true
   
   def create_date
     mon = created_at.mon < 10 ?  "0#{created_at.mon}" : created_at.mon

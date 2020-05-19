@@ -4,7 +4,7 @@ class ReviewTest < ActiveSupport::TestCase
   def setup
     @user = users(:tanakataro)
     @movie = movies(:movietest1)
-    @review = @user.reviews.build(evaluation: "2.0", movie_id: @movie.id)
+    @review = @user.reviews.build(star: "2.0", movie_id: @movie.id)
   end
   
   test "should be valid" do
@@ -16,8 +16,8 @@ class ReviewTest < ActiveSupport::TestCase
     assert_not @review.valid?
   end
   
-  test "evaluation should be present" do
-    @review.evaluation = nil
+  test "star should be present" do
+    @review.star = nil
     assert_not @review.valid?
   end
   

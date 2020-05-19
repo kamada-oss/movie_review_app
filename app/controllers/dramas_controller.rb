@@ -17,6 +17,7 @@ class DramasController < ApplicationController
   
   def show
     @drama = Drama.find(params[:id])
+    @reviews = Review.where(drama_id: @drama.id).page(params[:page]).per(10)
   end
   
   def year

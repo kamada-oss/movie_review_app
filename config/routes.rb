@@ -54,6 +54,9 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  resources :movies, :dramas do
+    resources :reviews, only: [:new, :create, :edit, :update]
+  end
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
@@ -61,6 +64,5 @@ Rails.application.routes.draw do
   resources :movies,              only: [:show]
   resources :dramas,              only: [:show]
   resources :casts,               only: [:show]
-  resources :reviews,             only: [:show]
   resources :relationships,       only: [:create, :destroy]
 end

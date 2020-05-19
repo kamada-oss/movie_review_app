@@ -109,7 +109,7 @@ class UserTest < ActiveSupport::TestCase
   
   test "associated reviews should be destroyed" do
     @user.save
-    @user.reviews.create!(evaluation: 2.0)
+    @user.reviews.create!(star: 2.0)
     assert_difference 'Review.count', -1 do
       @user.destroy
     end

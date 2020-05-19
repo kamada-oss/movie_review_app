@@ -6,13 +6,23 @@
     <%else%>
       <%= image_tag @movie.picture, size: "260x364"%>
     <% end %>
+    <div class="btn-group mt-2 review_btns_show" role="group" aria-label="Basic example">
+      <%= link_to new_movie_review_path(@movie), class: "btn btn-outline-light pl-5 pr-5 btn-off" do %>
+        <i class="far fa-eye fa-2x"></i> <br>
+        <%= @reviews.count %>
+      <% end %>
+      <%= link_to "#", class: "btn btn-outline-light pl-5 pr-5 btn-on" do%>
+        <i class="fas fa-layer-group fa-2x"></i> <br>
+        0
+      <% end %>
+    </div> 
   </div>
   <div class="col-md-9 movie_show_text">
     <h5 class="font-weight-bold"><%=@movie.title%>　
     <span class="small font-weight-bold">（<%= link_to "#{@movie.release.year}年", "#" %>製作の映画）</span></h5>
     <p>
       <span class="font-weight-bold">上映日：</span><%= "#{@movie.release.year}年#{@movie.release.mon}月#{@movie.release.day}日"%> ／
-      <span class="font-weight-bold">製作国：</span><%= link_to @movie.production, "#"%> ／
+      <span class="font-weigsht-bold">製作国：</span><%= link_to @movie.production, "#"%> ／
       <span class="font-weight-bold">上映時間：</span><%= "#{@movie.screening_time}分"%> 
     </p>
     <p>
@@ -42,26 +52,38 @@
     <% end %>
   </div>
 </div>
-<div class="col-md-8">
+<div class="col-md-8　mx-auto">
   <div class="card card_top">
     <div class="card-header text-secondary"><%="「#{@movie.title}」に投稿された感想・評価" %></div>
     <div class="card-body movie_list">
       <% @reviews.each do |review| %>
         <% user = review.user%>
-        <div class="card mb-3">
+        <div class="card mb-4">
           <div class="card-body">
             <div class="row">
-              <div class="col-md-3 movie_image">
+              <div class="col-md-2 movie_image">
                 <% if user.picture.nil?%>
                   <%= gravatar_for user %>
                 <%else%>
                   <%= image_tag user.picture, size: "150x200"%>
                 <% end %>
               </div>
-              <div class="col-md-9 movie_text">
-                <p class="card-text font-weight-bold"><%="#{user.nickname}の感想・評価"%></p>
+              <div class="col-md-8">
+                <h5 class="card-text font-weight-bold"><%="#{user.nickname}の感想・評価"%></h5>
                 <p class="card-text text-secondary"><%=review.create_date%></p>
-                <p class="card-text text-secondary"><%="評価：#{review.evaluation}"%></p>
+                <p class="card-text text-secondary"><%="評価：#{review.star}"%></p>
+                <div id="star-rate-<%= review.id %>"></div>
+                <script>
+                  $('#star-rate-<%= review.id %>').raty({
+                    size: 36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= review.star %>,
+                  });
+                </script>  
               </div>
             </div>  
             <%=review.comment%>

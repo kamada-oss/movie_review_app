@@ -349,3 +349,21 @@ footer{
 .drama_btn{
   padding-left: 0;
 }
+
+/* ----レビューボタン（show）---- */
+.review_btns_show{
+  .btn{
+    width: 130px;
+    height: 80px;
+  }
+}
+
+.btn-on{
+  background-color: #FFFF33;
+  color: #333333;
+}
+
+.btn-off{
+  background-color: #FFFFCC;
+  color: #CCCCCC;
+}
