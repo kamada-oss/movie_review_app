@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :set_movie_drama, only: [:new, :create]
-  before_action :set_screening_time, only: [:new]
-  before_action :set_casts, only: [:new]
+  before_action :set_movie_drama, only: [:new, :create, :edit, :update]
+  before_action :set_screening_time, only: [:new, :edit]
+  before_action :set_casts, only: [:new, :edit]
   before_action :logged_in_user, only:[:new,:create,:edit, :update]
   
   def new

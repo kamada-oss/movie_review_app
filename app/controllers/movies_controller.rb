@@ -20,6 +20,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @reviews = Review.where(movie_id: @movie.id).page(params[:page]).per(10)
+    @review = get_current_user_review
   end
   
   def year
@@ -92,5 +93,9 @@ class MoviesController < ApplicationController
       else
         @production_translated = "アメリカ"
       end
+    end
+    
+    def get_current_user_review
+      @reviews.empty? ? nil: @reviews.find_by(user_id: current_user.id)
     end
 end
