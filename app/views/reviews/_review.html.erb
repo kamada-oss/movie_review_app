@@ -13,7 +13,7 @@
         <h5 class="card-text font-weight-bold"><%="#{user.nickname}の感想・評価"%></h5>
           <p class="card-text text-secondary"><%=review.create_date%></p>
           <p class="card-text text-secondary"><%="評価：#{review.star}"%></p>
-          <div id="star-rate-<%= review.id %>"></div>
+          <div id="star-rate-<%= review.id %>" class="star-font"></div>
           <script>
             $('#star-rate-<%= review.id %>').raty({
               size: 36,

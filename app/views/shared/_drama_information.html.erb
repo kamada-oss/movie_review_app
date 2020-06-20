@@ -22,6 +22,20 @@
                 <p class="card-text">
                   <span class="font-weight-bold">ジャンル：</span><%= link_to drama.genre, "/dramas/list/genre/#{drama.genre_translation}"%>
                 </p>
+                <p class="star">
+                  <span id="star-rate-<%= drama.id %>"></span>
+                  <script>
+                    $('#star-rate-<%= drama.id %>').raty({
+                      size: 100,
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half: true,
+                      readOnly: true,
+                      score: <%= drama.reviews.average(:star).to_f %>,
+                    });
+                  </script> 
+                </p>
                 <div class="row">
                   <div class="col-md-auto">
                     <p class="mt-2"><span class="font-weight-bold">監督</span></p>

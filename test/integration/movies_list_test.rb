@@ -356,4 +356,5 @@ class MoviesListTest < ActionDispatch::IntegrationTest
       assert_select "a[href=?]", "/movies/list/production/#{movie.production_translation}", maximum: 1
     end
   end
+  
 end

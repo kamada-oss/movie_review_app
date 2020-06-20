@@ -20,7 +20,10 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @reviews = Review.where(movie_id: @movie.id).page(params[:page]).per(10)
-    @review = get_current_user_review
+    if logged_in?
+      @review = get_current_user_review
+    end
+    @average_star = get_average_star
   end
   
   def year
@@ -97,5 +100,30 @@ class MoviesController < ApplicationController
     
     def get_current_user_review
       @reviews.empty? ? nil: @reviews.find_by(user_id: current_user.id)
+    end
+    
+    def get_average_star
+      ave_star = @reviews.empty? ? 0: @reviews.average(:star).to_f
+      if ave_star >= 4.5
+        4.5
+      elsif ave_star >= 4.0
+        4.0
+      elsif ave_star >= 3.5
+        3.5
+      elsif ave_star >= 3.0
+        3.0
+      elsif ave_star >= 2.5
+        2.5
+      elsif ave_star >= 2.0
+        2.0
+      elsif ave_star >= 1.5
+        1.5
+      elsif ave_star >= 1.0
+        1.0
+      elsif ave_star >= 0.5
+        0.5
+      else
+        0
+      end
     end
 end

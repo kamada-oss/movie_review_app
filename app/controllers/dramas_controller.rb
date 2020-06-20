@@ -18,6 +18,10 @@ class DramasController < ApplicationController
   def show
     @drama = Drama.find(params[:id])
     @reviews = Review.where(drama_id: @drama.id).page(params[:page]).per(10)
+    if logged_in?
+      @review = get_current_user_review
+    end
+    @average_star = get_average_star
   end
   
   def year
@@ -89,6 +93,35 @@ class DramasController < ApplicationController
         @production_translated = "フランス"
       else
         @production_translated = "アメリカ"
+      end
+    end
+    
+    def get_current_user_review
+      @reviews.empty? ? nil: @reviews.find_by(user_id: current_user.id)
+    end
+    
+    def get_average_star
+      average_star = @reviews.empty? ? 0: @reviews.average(:star).to_f
+      if average_star >= 4.5
+        4.5
+      elsif average_star >= 4.0
+        4.0
+      elsif average_star >= 3.5
+        3.5
+      elsif average_star >= 3.0
+        3.0
+      elsif average_star >= 2.5
+        2.5
+      elsif average_star >= 2.0
+        2.0
+      elsif average_star >= 1.5
+        1.5
+      elsif average_star >= 1.0
+        1.0
+      elsif average_star >= 0.5
+        0.5
+      else
+        0
       end
     end
 end

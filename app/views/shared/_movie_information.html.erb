@@ -23,6 +23,20 @@
                 <p class="card-text">
                   <span class="font-weight-bold">ジャンル：</span><%= link_to movie.genre, "/movies/list/genre/#{movie.genre_translation}"%>
                 </p>
+                <p class="star">
+                  <span id="star-rate-<%= movie.id %>"></span>
+                  <script>
+                    $('#star-rate-<%= movie.id %>').raty({
+                      size: 100,
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half: true,
+                      readOnly: true,
+                      score: <%= movie.reviews.average(:star).to_f %>,
+                    });
+                  </script> 
+                </p>
                 <div class="row">
                   <div class="col-md-auto">
                     <p class="mt-2"><span class="font-weight-bold">監督</span></p>
