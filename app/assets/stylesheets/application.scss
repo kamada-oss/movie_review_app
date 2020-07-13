@@ -212,6 +212,17 @@ footer{
   padding: 0;
 }
 
+.line_4{
+  overflow: hidden;
+  height: 4.3em;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+.btn-small{
+  font-size: 0.7em;
+}
+
 /* ----エラーメッセージ ---- */
 #error_explanation {
   color: red;

@@ -1,0 +1,55 @@
+  <div class="col-md-6">
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="font-weight-bold"><%= "#{review.movie.title} (#{review.movie.release.year}年制作の映画)" %></p>
+            <p class="star">
+              <span id="star-rate-<%= review.id %>"></span>
+              <script>
+                $('#star-rate-<%= review.id %>').raty({
+                  size: 100,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= review.star %>,
+                });
+              </script> 
+            </p>
+            <p class="line_4"><%= review.comment %></p>
+            <div class="d-block mt-2">
+              <%= link_to ">>詳しい情報を見る", "#", class:"float-right cast_name"%>
+            </div>
+          </div>
+          <div class="col-md-6 movie_image">
+            <% if review.movie.picture.nil?%>
+              <%= image_tag 'no_image.jpg', size: "150x200" %>
+            <%else%>
+              <%= image_tag review.movie.picture, size: "150x200"%>
+            <% end %>
+            <div class="btn-group mt-2 review_btns_show" role="group" aria-label="Basic example">
+            <% if logged_in? %>
+              <% unless review.movie.users.find_by(id: current_user.id).nil? %>
+                <%= link_to edit_movie_review_path(review.movie, review), class: "btn btn-outline-light pl-2 pr-2 btn-on btn-small" do %>
+                  <i class="far fa-eye fa-2x"></i> <br>
+                  <%= review.movie.reviews.count %>
+                <% end %>
+              <% else %>
+                <%= link_to new_movie_review_path(review.movie), class: "btn btn-outline-light pl-2 pr-2 btn-off btn-small" do %>
+                  <i class="far fa-eye fa-2x"></i> <br>
+                  <%= review.movie.reviews.count %>
+                <% end %>
+              <% end %>
+              <%= link_to "#", class: "btn btn-outline-light pl-2 pr-2 btn-on btn-small" do%>
+                <i class="fas fa-layer-group fa-2x"></i> <br>
+                0
+              <% end %>
+            <% end %>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>

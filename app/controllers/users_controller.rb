@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @reviews = @user.reviews.where.not(movie_id: nil)
   end
   
   def enter_activaton_email
