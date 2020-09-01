@@ -10,20 +10,46 @@
 		</div>
 	</div>
 </div>
-<h1>a</h1>
-<h1>a</h1>
-<h1>a</h1>
-<h1>a</h1>
-<h1>a</h1>
-<h1>a</h1>
-<h1>a</h1>
-<h1>a</h1>
-<h1>a</h1>
-<h1>a</h1>
-<h1>a</h1>
-<%if request.from_pc?%>
-	<h1>aaa</h1>
-<%else%>
-	<h1>bbb</h1>
-<%end%>
+<div class="col-md-12 mt-5">
+    <div class="card card_top">
+      <div class="card-header text-center font-weight-bold home-card-top">おすすめ映画</div>
+			<div class="row">
+				<%= @movies.each do |movie|%>
+					<div class="col-md-2 mx-auto movie_image home-movie">
+						<div class="row">
+					    <% if movie.picture.nil?%>
+					      <%= image_tag 'no_image.jpg', size: "220x330" %>
+					    <% else %>
+					      <%= image_tag movie.picture, size: "260x364"%>
+					    <% end %>
+					   </div>
+					  <div class="row">
+				    	<%= movie.title%>
+				    </div>
+					</div>
+				<% end %>
+		</div>
+	</div>
+</div>
+<div class="col-md-12 mt-5">
+    <div class="card card_top">
+      <div class="card-header text-center font-weight-bold home-card-top">おすすめドラマ</div>
+			<div class="row">
+				<%= @dramas.each do |drama|%>
+					<div class="col-md-2 mx-auto movie_image home-movie">
+						<div class="row">
+					    <% if drama.picture.nil?%>
+					      <%= image_tag 'no_image.jpg', size: "220x330" %>
+					    <% else %>
+					      <%= image_tag drama.picture, size: "260x364"%>
+					    <% end %>
+					   </div>
+					  <div class="row">
+				    	<%= drama.title%>
+				    </div>
+					</div>
+				<% end %>
+		</div>
+	</div>
+</div>
 
