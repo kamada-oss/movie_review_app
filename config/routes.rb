@@ -51,11 +51,12 @@ Rails.application.routes.draw do
   get 'casts/drama/:id', to:'casts#show_drama'
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :show_review_drama
     end
   end
   resources :movies, :dramas do
-    resources :reviews, only: [:new, :create, :edit, :update]
+    resources :reviews,           only: [:new, :create, :edit, :update]
+    resources :books,             only: [:create, :destroy]
   end
   resources :users
   resources :account_activations, only: [:edit]

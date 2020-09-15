@@ -19,9 +19,16 @@
             <%= @reviews.count %>
           <% end %>
         <% end %>
-        <%= link_to "#", class: "btn btn-outline-light pl-5 pr-5 btn-on" do%>
-          <i class="fas fa-layer-group fa-2x"></i> <br>
-          0
+        <% if Book.find_by(user_id: current_user.id, movie_id: @movie.id) %>
+          <%= link_to movie_book_path(@movie), method: :delete,class: "btn btn-outline-light pl-5 pr-5 btn-on", remote: true do%>
+            <i class="fas fa-layer-group fa-2x"></i> <br>
+            <%= @movie.books.count%>
+          <% end %>
+        <% else %>
+          <%= link_to movie_books_path(@movie), method: :post,class: "btn btn-outline-light pl-5 pr-5 btn-off", remote: true do%>
+            <i class="fas fa-layer-group fa-2x"></i> <br>
+            <%= @movie.books.count%>
+          <% end %>
         <% end %>
       <% end %>
     </div> 

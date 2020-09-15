@@ -133,7 +133,10 @@ footer{
   text-align: center;
 }
 .home-movie{
-  padding-left: 60px;
+  padding-left: 25px;
+  img{
+    width : 15vw;
+  }
 }
 .home-card-top{
   background-color: #CCFFFF;
@@ -381,9 +384,16 @@ footer{
 /* ----レビューボタン（show）---- */
 .review_btns_show{
   .btn{
-    width: 120px;
+    width: 130px;
     height: 70px;
   }
+}
+
+.review_btns_show_2{
+  .btn{
+    width: 90px;
+    height: 70px;
+  } 
 }
 
 .btn-on{

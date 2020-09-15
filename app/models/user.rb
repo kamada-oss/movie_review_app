@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   has_many :reviews,dependent: :destroy
-   has_many :movies, through: :reviews
-   has_many :dramas, through: :reviews
+    has_many :movies, through: :reviews
+    has_many :dramas, through: :reviews
+  has_many :books,dependent: :destroy
+    has_many :movies, through: :books
+    has_many :dramas, through: :books
   has_many :active_relationships, class_name:  "Relationship",
     foreign_key: "follower_id",
     dependent:   :destroy

@@ -14,17 +14,17 @@
     <div class="card card_top">
       <div class="card-header text-center font-weight-bold home-card-top">おすすめ映画</div>
 			<div class="row">
-				<%= @movies.each do |movie|%>
+				<% @movies.each do |movie| %>
 					<div class="col-md-2 mx-auto movie_image home-movie">
 						<div class="row">
 					    <% if movie.picture.nil?%>
-					      <%= image_tag 'no_image.jpg', size: "220x330" %>
+					      <%= image_tag 'no_image.jpg', size: "220x300" %>
 					    <% else %>
 					      <%= image_tag movie.picture, size: "260x364"%>
 					    <% end %>
 					   </div>
-					  <div class="row">
-				    	<%= movie.title%>
+					  <div class="row pt-4 pb-4">
+				    	<%= link_to movie.title, movie %>
 				    </div>
 					</div>
 				<% end %>
@@ -35,7 +35,7 @@
     <div class="card card_top">
       <div class="card-header text-center font-weight-bold home-card-top">おすすめドラマ</div>
 			<div class="row">
-				<%= @dramas.each do |drama|%>
+				<% @dramas.each do |drama|%>
 					<div class="col-md-2 mx-auto movie_image home-movie">
 						<div class="row">
 					    <% if drama.picture.nil?%>
@@ -44,8 +44,8 @@
 					      <%= image_tag drama.picture, size: "260x364"%>
 					    <% end %>
 					   </div>
-					  <div class="row">
-				    	<%= drama.title%>
+					  <div class="row pt-4 pb-4">
+				    	<%= link_to drama.title, drama %>
 				    </div>
 					</div>
 				<% end %>

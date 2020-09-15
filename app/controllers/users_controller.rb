@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @reviews = @user.reviews.where.not(movie_id: nil)
+    @reviews = @user.reviews.where.not(movie_id: nil).page(params[:page]).per(6)
   end
   
   def enter_activaton_email
@@ -138,6 +138,11 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @users = @user.followers.page(params[:page]).per(10)
     render 'show_follow'
+  end
+  
+  def show_review_drama
+    @user = User.find(params[:id])
+    @reviews = @user.reviews.where.not(drama_id: nil).page(params[:page]).per(6)
   end
   
   

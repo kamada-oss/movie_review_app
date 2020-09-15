@@ -5,7 +5,10 @@ class Drama < ApplicationRecord
    has_many :casts, through: :drama_casts
   has_many :reviews
    has_many :users, through: :reviews
-   validates :title, presence: true, uniqueness: true
+  has_many :books
+   has_many :users, through: :books
+   
+  validates :title, presence: true, uniqueness: true
    
   def genre_translation
     case genre
