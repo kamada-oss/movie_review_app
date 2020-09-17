@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   before_action :correct_user, only:[:edit_prof,:update_prof,:edit_account,:edit_email,:edit_password,:update_password, ]
   before_action :admin_user, only:[:destroy]
   before_action :not_post_for_confirm, only:[:confirm]
+  before_action :set_user, only:[:show, :edit_prof, :update_prof, :edit_account, :edit_password, :update_password, :withdraw,
+                                :show_review_drama, :show_book_movie, :show_book_drama]
   
   def new
     @user = User.new
@@ -16,7 +18,6 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
     @reviews = @user.reviews.where.not(movie_id: nil).page(params[:page]).per(6)
   end
   
@@ -78,11 +79,9 @@ class UsersController < ApplicationController
   end
   
   def edit_prof
-    @user = User.find(params[:id])
   end
   
   def update_prof
-    @user = User.find(params[:id])
     @user.assign_attributes(user_params)
     if @user.save(context: [:change_nickname, :change_profile])
       flash[:success] = "設定を保存しました"
@@ -93,15 +92,12 @@ class UsersController < ApplicationController
   end
   
   def edit_account
-    @user = User.find(params[:id])
   end
   
   def edit_password
-    @user = User.find(params[:id])
   end
   
   def update_password
-    @user = User.find(params[:id])
     @user.assign_attributes(user_params)
     if  @user.save(context: :change_password)
       flash[:success] = "パスワード変更が完了しました"
@@ -113,7 +109,6 @@ class UsersController < ApplicationController
   end
   
   def withdraw
-    @user = User.find(params[:id])
   end
   
   def index
@@ -141,13 +136,22 @@ class UsersController < ApplicationController
   end
   
   def show_review_drama
-    @user = User.find(params[:id])
     @reviews = @user.reviews.where.not(drama_id: nil).page(params[:page]).per(6)
+  end
+  
+  def show_book_movie
+    @books = @user.books.where.not(movie_id: nil).page(params[:page]).per(6)
+  end
+  
+  def show_book_drama
+    @books = @user.books.where.not(drama_id: nil).page(params[:page]).per(6)
   end
   
   
   private
-  
+    def set_user
+      @user = User.find(params[:id])
+    end
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :nickname, 
                                    :agreement, :profile, :activated, :activated_at, :activation_digest)

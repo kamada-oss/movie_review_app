@@ -1,20 +1,20 @@
-<% provide(:title, "#{@user.nickname}さんのドラマレビュー")%>
+<% provide(:title, "#{@user.nickname}さんが後で見る映画")%>
 <%= render 'show_profile'%>
 <div class="d-flex justify-content-center mt-5 mb-4">
   <div class="btn-group" role="group" aria-label="Basic example">
-    <%= link_to "映画", @user, class: "btn btn-secondary pl-4 pr-4" %>
-    <%= link_to "ドラマ", show_review_drama_user_path(@user), class: "btn btn-dark pl-3 pr-3" %>
+    <%= link_to "映画", show_book_movie_user_path(@user), class: "btn btn-dark pl-4 pr-4" %>
+    <%= link_to "ドラマ", show_book_drama_user_path(@user), class: "btn btn-secondary pl-3 pr-3" %>
   </div>
 </div>
 <div class="d-flex justify-content-center mt-5 mb-4">
   <div class="btn-group" role="group" aria-label="Basic example">
-    <%= link_to @user, class: "btn btn-secondary pl-5 pr-5" do%>
+    <%= link_to @user, class: "btn btn-outline-secondary pl-5 pr-5" do%>
       <i class="far fa-eye"></i> <br>
-      <%= @reviews.count %>
+      <%= @user.reviews.where.not(movie_id: nil).count %>
     <% end %>
-    <%= link_to show_book_movie_user_path(@user), class: "btn btn-outline-secondary pl-5 pr-5" do%>
+    <%= link_to show_book_movie_user_path(@user), class: "btn btn-secondary pl-5 pr-5" do%>
       <i class="fas fa-layer-group"></i> <br>
-      <%= @user.books.count %>
+      <%= @user.books.where.not(movie_id: nil).count %>
     <% end %>
     <%= link_to "#", class: "btn btn-outline-secondary pl-5 pr-5" do%>
       <i class="far fa-heart"></i> <br>
@@ -32,13 +32,14 @@
 </div>
 <div class="card card_top">
   <div class="card-body">
-    <% @reviews.each_slice(2) do |left_review, right_review| %>
+    <% @books.each_slice(2) do |left_book, right_book| %>
       <div class="row">
-        <%= render partial: 'review_show_drama.html.erb', locals: { review: left_review } %>
-        <% unless right_review.nil?%>
-          <%= render partial: 'review_show_drama.html.erb', locals: { review: right_review } %>
+        <%= render partial: 'book_show_movie.html.erb', locals: { book: left_book } %>
+        <% unless right_book.nil?%>
+          <%= render partial: 'book_show_movie.html.erb', locals: { book: right_book } %>
         <% end %>
       </div>
     <% end %>
+    <%= paginate @books, theme: 'twitter-bootstrap-4'%>
   </div>
 </div>
