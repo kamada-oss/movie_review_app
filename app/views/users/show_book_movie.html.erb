@@ -10,7 +10,7 @@
   <div class="btn-group" role="group" aria-label="Basic example">
     <%= link_to @user, class: "btn btn-outline-secondary pl-5 pr-5" do%>
       <i class="far fa-eye"></i> <br>
-      <%= @user.reviews.where.not(movie_id: nil).count %>
+      <%= @user.reviews.count %>
     <% end %>
     <%= link_to show_book_movie_user_path(@user), class: "btn btn-secondary pl-5 pr-5" do%>
       <i class="fas fa-layer-group"></i> <br>

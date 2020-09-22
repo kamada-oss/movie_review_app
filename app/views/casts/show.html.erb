@@ -1,5 +1,5 @@
 <% provide(:title, "#{@cast.name}が監督・出演する映画作品")%>
-<%=render("shared/cast_show.html.erb")%>
+<%=render("cast_show_head.html.erb")%>
 <div class="d-flex justify-content-center mt-5 mb-4">
   <div class="btn-group" role="group" aria-label="Basic example">
     <%= link_to "映画(#{@movies_unique.count})", @cast, class: "btn btn-dark pl-4 pr-4" %>

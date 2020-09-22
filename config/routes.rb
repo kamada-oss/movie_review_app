@@ -63,6 +63,8 @@ Rails.application.routes.draw do
   resources :email_resets,        only: [:edit]
   resources :movies,              only: [:show]
   resources :dramas,              only: [:show]
-  resources :casts,               only: [:show]
+  resources :casts,               only: [:show] do
+    resources :likes,             only: [:create, :destroy]
+  end
   resources :relationships,       only: [:create, :destroy]
 end

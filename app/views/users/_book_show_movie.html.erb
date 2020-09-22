@@ -16,7 +16,7 @@
             <%else%>
               <%= image_tag book.movie.picture, size: "150x200"%>
             <% end %>
-            <div class="btn-group mt-2 review_btns_show_2" role="group" aria-label="Basic example">
+            <div class="btn-group mt-2 review_btns_show_3" role="group" aria-label="Basic example">
             <% if logged_in? %>
               <% if Book.find_by(user_id: current_user.id, movie_id: book.movie.id) %>
                 <%= link_to movie_book_path(book.movie), method: :delete,class: "btn btn-outline-light btn-small btn-on", remote: true do%>

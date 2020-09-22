@@ -9,6 +9,8 @@
   box-sizing:         border-box;
 }
 
+
+
 /* ----miscellaneous---- */
 
 .debug_dump {
@@ -395,6 +397,12 @@ footer{
     height: 70px;
   } 
 }
+.review_btns_show_3{
+  .btn{
+    width: 150px;
+    height: 70px;
+  } 
+}
 
 .btn-on{
   background-color: #FFFF33;
@@ -404,4 +412,14 @@ footer{
 .btn-off{
   background-color: #FFFFCC;
   color: #CCCCCC;
+}
+
+.like-on{
+  background-color: #FF8856;
+  color: #333333;
+}
+
+.like-off{
+  background-color: #FFC7AF;
+  color: #333333;
 }

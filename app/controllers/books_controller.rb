@@ -9,6 +9,7 @@ class BooksController < ApplicationController
       book = current_user.books.new(movie_id: @movie_drama.id)
     end
     book.save
+    redirect_back(fallback_location: root_path)
   end
   
   def destroy
@@ -18,6 +19,7 @@ class BooksController < ApplicationController
       book = current_user.books.find_by(movie_id: @movie_drama.id)
     end
     book.destroy
+    redirect_back(fallback_location: root_path)
   end
   
   private

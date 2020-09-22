@@ -1,0 +1,36 @@
+<div class="row mt-3">
+  <div class="col-md-auto">
+    <% if @cast.picture.nil?%>
+      <%= image_tag 'no_image.jpg', size: "100x100" %>
+    <%else%>
+      <%= image_tag @cast.picture, size: "100x100"%>
+    <% end %>
+  </div>
+  <div class="col-md-auto">
+    <h5 class="font-weight-bold"><%=@cast.name%></h5>
+    <% if @cast.country == "不明" %>
+      <p class="text-secondary">不明</p>
+    <% elsif @cast.hometown == "不明" %>
+      <p class="text-secondary"><%=@cast.country%></p>
+    <% else %>
+      <p class="text-secondary"><%=@cast.country%>／<%=@cast.hometown%></p>
+    <% end %>
+  </div>
+  <div class="col-md">
+    <p class="text-secondary float-right">Fanが<span class="font-weight-bold">100</span>人います。
+    <% if logged_in? %>
+      <% if Like.find_by(user_id: current_user.id, cast_id: @cast.id) %>
+        <%= link_to cast_like_path(@cast), method: :delete,class: "btn btn-outline-light btn-small like-on" do%>
+          <i class="fas fa-heart"></i>
+          Fanをやめる
+        <% end %>
+      <% else %>
+        <%= link_to cast_likes_path(@cast), method: :post,class: "btn btn-outline-light btn-small like-off" do%>
+          <i class="far fa-heart"></i>
+          Fanになる
+        <% end %>
+      <% end %>
+    <% end %>
+    </p>
+  </div>
+</div>
